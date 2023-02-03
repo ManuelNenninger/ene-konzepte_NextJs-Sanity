@@ -5,19 +5,21 @@ import SeoHead from "src/components/seo/seohead";
 import NotFoundPage from "pages/404";
 import Fullpageloader from "src/components/atoms/actions/fullpageloader";
 import { useRouter } from "next/router";
-import { getFooterData, getPostData } from "lib/api";
+import { getPageData, getFooterData } from "lib/api";
+import { useGetPages } from "src/components/atoms/fetcher/fetch";
 import PreviewAlert from "src/components/atoms/actions/previewalert";
 
-const Post = ({ post = {}, footer = {}, preview = false }) => {
+export default function Site({ pages = {}, footer = {}, preview = false }) {
+  const { seo = {}, slug = "" } = pages;
   const router = useRouter();
 
-  // const { data: revalidatedPages, error } = useGetPages({
-  //   initialData: pages,
-  //   slug: pages?.slug,
-  //   preview: preview,
-  // });
+  const { data: revalidatedPages, error } = useGetPages({
+    initialData: pages,
+    slug: pages?.slug,
+    preview: preview,
+  });
 
-  if (!router.isFallback && !post?.slug) {
+  if (!router.isFallback && !pages?.slug) {
     return <NotFoundPage statusCode={404} />;
   }
 
@@ -25,22 +27,33 @@ const Post = ({ post = {}, footer = {}, preview = false }) => {
     return <Fullpageloader />;
   }
 
-  if (!router.isFallback && post?.slug) {
+  if (!router.isFallback && pages?.slug) {
     return (
       <>
-        {/* {Object.keys(seo).length !== 0 && <SeoHead seo={seo} slug={slug} />} */}
+        {Object.keys(seo).length !== 0 && <SeoHead seo={seo} slug={slug} />}
         <Layout footer={footer}>
           {preview && <PreviewAlert />}
-          <h1>Der Title deines Blogs ist: {post.title}</h1>
+          {revalidatedPages.pageBuilder?.map(function (obj, index) {
+            console.log({ ...Object.values(obj)[0] });
+            //console.log("Module Name ist: ", Object.keys(obj)[0]);
+            const content = { ...Object.values(obj)[0] };
+            return (
+              <Module
+                moduleName={Object.keys(obj)[0]}
+                onVariantChange={content}
+                content={content}
+              />
+            );
+          })}
         </Layout>
       </>
     );
   }
-};
+}
 
 export async function getStaticPaths() {
   const paths = await client.fetch(
-    `*[_type == "post" && defined(slug.current)][].slug.current`
+    `*[_type == "page" && defined(slug.current)][].slug.current`
   );
 
   return {
@@ -52,12 +65,12 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { slug = "" } = context.params;
   const { preview = false, previewData } = context;
-  const post = await getPostData(slug, preview);
+  const pages = await getPageData(slug, preview);
   const footer = await getFooterData();
 
   return {
     props: {
-      post,
+      pages,
       footer,
       preview,
     },
@@ -66,5 +79,3 @@ export async function getStaticProps(context) {
       : parseInt(86400),
   };
 }
-
-export default Post;
