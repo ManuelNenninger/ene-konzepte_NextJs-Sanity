@@ -1,6 +1,6 @@
 import React from "react";
 
-// import HeroSection from "../organisms/herosection";
+import HeroSection from "src/components/organisms/hero";
 // import AgreementSection from "../organisms/agreementsection";
 // import ProcessTimeline from "../organisms/processtimeline";
 // import AboutSection from "../organisms/aboutsection";
@@ -17,7 +17,7 @@ export const Module = ({ content, moduleName }) => {
   const ModuleType =
     {
       // grid: AgreementSection,
-      // hero: HeroSection,
+      hero: HeroSection,
       // process: ProcessTimeline,
       // about: AboutSection,
       // portfolio: PortfolioSection,

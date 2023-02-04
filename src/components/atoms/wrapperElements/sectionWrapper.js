@@ -21,7 +21,7 @@ export default function SectionWrapper(props) {
     transition,
   } = props;
   //Eine Wave schafft 300px distance. Hier kommen 150px padding, sowie 150px Margin des Deviders hinzu
-  const gridDistance = 180;
+  const gridDistance = 80;
 
   //Hier wird das Top Padding definiert
   const upperPaddingCheck = () => {

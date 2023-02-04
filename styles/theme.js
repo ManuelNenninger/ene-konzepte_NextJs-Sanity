@@ -1,30 +1,31 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 // Create a theme instance.
 //typography: Base Scale 14px und Scale 1.2 theme.palette.primary.dark
 const theme = createTheme({
   palette: {
-     primary: {
-       main: 'rgb(222, 222, 210)',
-       light: "rgba( 222, 222, 210, 0.6 )",
-     },
+    primary: {
+      main: "#FFFFF",
+      light: "rgba( 255, 255, 255, 0.6 )",
+      dark: "#FFF8F0",
+    },
     secondary: {
-      main: 'rgb(29, 58, 36)',
-      light: "rgba(29, 58, 36, 0.55)",
+      main: "#011640",
+      light: "rgba(1,22,64, 0.55)",
     },
     error: {
-      main: "rgb(97, 53, 38)",
+      main: "#AE4F4F",
     },
     text: {
       subtitleColor: "#3D3D3D",
     },
     borderColor: {
-      main: '#DAD9CD',
-      dark: '#292727',
+      main: "#DAD9CD",
+      dark: "#292727",
     },
     text: {
-      main: 'rgb(29, 58, 36)',
-      secondary: 'rgb(222, 222, 210)',
+      main: "#011640",
+      secondary: "rgb(222, 222, 210)",
     },
   },
   // typography: {
