@@ -34,6 +34,10 @@ const Index = ({ pages = {}, footer = {} }) => {
           moduleName={"hero"}
           //content={content}
         />
+        <Module
+          moduleName={"portfolio"}
+          //content={content}
+        />
 
         {/* {revalidatedPages.pageBuilder?.map(function (obj, index) {
           console.log({ ...Object.values(obj)[0] });

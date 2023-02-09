@@ -11,7 +11,11 @@ const theme = createTheme({
     },
     secondary: {
       main: "#011640",
-      light: "rgba(1,22,64, 0.55)",
+      light: "rgba(1,22,64, 0.7)",
+    },
+    tertiary: {
+      main: "#E7ECEF",
+      light: "rgba(231, 236, 239, 0.7)",
     },
     error: {
       main: "#AE4F4F",
@@ -25,7 +29,7 @@ const theme = createTheme({
     },
     text: {
       main: "#011640",
-      secondary: "rgb(222, 222, 210)",
+      secondary: "rgba(1,22,64, 0.7)",
     },
   },
   // typography: {

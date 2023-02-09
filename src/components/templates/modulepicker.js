@@ -1,6 +1,7 @@
 import React from "react";
 
 import HeroSection from "src/components/organisms/hero";
+import PortfolioSection from "src/components/organisms/portfolio";
 // import AgreementSection from "../organisms/agreementsection";
 // import ProcessTimeline from "../organisms/processtimeline";
 // import AboutSection from "../organisms/aboutsection";
@@ -20,7 +21,7 @@ export const Module = ({ content, moduleName }) => {
       hero: HeroSection,
       // process: ProcessTimeline,
       // about: AboutSection,
-      // portfolio: PortfolioSection,
+      portfolio: PortfolioSection,
       // offer: OfferSection,
       // block: BlockSite,
       // vision: VisionSection,

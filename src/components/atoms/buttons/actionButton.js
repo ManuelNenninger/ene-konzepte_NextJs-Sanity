@@ -34,9 +34,7 @@ export default function ContainedActionButton(props) {
     outlined: props.secondaryColor
       ? theme.palette.secondary.main
       : theme.palette.primary.main,
-    contained: props.secondaryColor
-      ? theme.palette.primary.main
-      : theme.palette.primary.main,
+    contained: props.secondaryColor ? "#FFF" : "#FFF",
   };
 
   //const backgroundColor = props.variant == "outlined" ? "none" : theme.palette.secondary.main;
