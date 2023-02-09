@@ -2,6 +2,7 @@ import React from "react";
 
 import HeroSection from "src/components/organisms/hero";
 import PortfolioSection from "src/components/organisms/portfolio";
+import InfoBande from "src/components/organisms/infobande";
 // import AgreementSection from "../organisms/agreementsection";
 // import ProcessTimeline from "../organisms/processtimeline";
 // import AboutSection from "../organisms/aboutsection";
@@ -19,6 +20,7 @@ export const Module = ({ content, moduleName }) => {
     {
       // grid: AgreementSection,
       hero: HeroSection,
+      infoBande: InfoBande,
       // process: ProcessTimeline,
       // about: AboutSection,
       portfolio: PortfolioSection,

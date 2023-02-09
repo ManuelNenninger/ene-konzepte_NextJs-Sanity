@@ -10,6 +10,8 @@ import Button, { ButtonProps } from "@mui/material/Button";
 import Link from "next/link";
 import { useTheme } from "@mui/material/styles";
 
+import ArrowButton from "src/components/atoms/buttons/arrowButton";
+
 import Property1 from "public/property1.png";
 
 // interface Props {
@@ -72,14 +74,7 @@ export default function PropertyCard({
         </Typography>
       </CardContent>
       <CardActions>
-        <ColorButton endIcon={<ArrowRightAltIcon />}>
-          <Typography
-            variant="body2"
-            sx={{ borderBottom: 1, borderColor: theme.palette.secondary.main }}
-          >
-            <Link href={propertyURL ? propertyURL : "/"}>See details </Link>
-          </Typography>
-        </ColorButton>
+        <ArrowButton buttonURL={propertyURL} />
       </CardActions>
     </Card>
   );
