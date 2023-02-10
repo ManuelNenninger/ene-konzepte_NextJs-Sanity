@@ -1,11 +1,6 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { styled } from "@mui/material/styles";
-import Button, { ButtonProps } from "@mui/material/Button";
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import Link from "next/link";
 
 import SectionWrapper from "src/components/atoms/wrapperElements/sectionWrapper";
 import ArrowButton from "src/components/atoms/buttons/arrowButton";
