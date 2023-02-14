@@ -4,6 +4,7 @@ import HeroSection from "src/components/organisms/hero";
 import PortfolioSection from "src/components/organisms/portfolio";
 import InfoBande from "src/components/organisms/infobande";
 import AgreementSection from "src/components/organisms/agreement";
+import TestimonialSection from "src/components/organisms/testimonial";
 // import AgreementSection from "../organisms/agreementsection";
 // import ProcessTimeline from "../organisms/processtimeline";
 // import AboutSection from "../organisms/aboutsection";
@@ -23,6 +24,7 @@ export const Module = ({ content, moduleName }) => {
       hero: HeroSection,
       infoBande: InfoBande,
       agreement: AgreementSection,
+      testimonial: TestimonialSection,
       // process: ProcessTimeline,
       // about: AboutSection,
       portfolio: PortfolioSection,

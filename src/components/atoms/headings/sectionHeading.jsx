@@ -12,7 +12,6 @@ export default function SectionHeading({ heading, subHeading }) {
       <>
         <Typography
           variant="h2"
-          component="h1"
           gutterBottom
           sx={{ display: { xs: "none", md: "block" }, fontWeight: 400 }}
         >
@@ -20,7 +19,6 @@ export default function SectionHeading({ heading, subHeading }) {
         </Typography>
         <Typography
           variant="h3"
-          component="h1"
           gutterBottom
           sx={{ display: { xs: "block", md: "none" } }}
         >
@@ -34,7 +32,6 @@ export default function SectionHeading({ heading, subHeading }) {
       <>
         <Typography
           variant="subtitle1"
-          component="h2"
           color="text.secondary"
           gutterBottom
           sx={{
@@ -45,7 +42,6 @@ export default function SectionHeading({ heading, subHeading }) {
         </Typography>
         <Typography
           variant="subtitle1"
-          component="h2"
           color="text.secondary"
           gutterBottom
           sx={{
