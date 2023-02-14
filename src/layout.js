@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
-//import Footer from "./organisms/footer"
+import Footer from "src/components/organisms/footer";
 import Appbar from "src/components/organisms/appbar";
 
 export default function Layout(props) {
@@ -21,7 +21,7 @@ export default function Layout(props) {
         >
           <Appbar>
             <main>{props.children}</main>
-            {/*<Footer/>*/}
+            <Footer />
           </Appbar>
         </Box>
       </Box>

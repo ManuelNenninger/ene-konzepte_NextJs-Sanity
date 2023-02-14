@@ -41,6 +41,7 @@ export default function AgreementGrid() {
           justifyContent="flex-start"
           alignItems="center"
           spacing={2}
+          sx={{ px: { xs: 10, md: 15 } }}
         >
           <Grid item xs={12}>
             <Icon sx={{ fontSize: 60 }}>{icon}</Icon>
@@ -79,18 +80,13 @@ export default function AgreementGrid() {
       <Grid
         container
         direction="row"
-        justifyContent="flex-start"
+        justifyContent="center"
         alignItems="flex-start"
+        spacing={10}
       >
         {AgreementArray.map((obj, index) => {
           return (
-            <Grid
-              xs={12}
-              md={6}
-              item
-              key={index}
-              sx={{ px: { xs: 10, md: 15 }, py: 10 }}
-            >
+            <Grid xs={12} md={6} item key={"agreement_" + index}>
               <AgreementCell {...obj} />
             </Grid>
           );

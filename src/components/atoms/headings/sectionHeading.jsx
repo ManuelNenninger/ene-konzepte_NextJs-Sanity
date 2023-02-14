@@ -13,6 +13,7 @@ export default function SectionHeading({ heading, subHeading }) {
         <Typography
           variant="h2"
           gutterBottom
+          align="center"
           sx={{ display: { xs: "none", md: "block" }, fontWeight: 400 }}
         >
           {props.children}
@@ -20,6 +21,7 @@ export default function SectionHeading({ heading, subHeading }) {
         <Typography
           variant="h3"
           gutterBottom
+          align="center"
           sx={{ display: { xs: "block", md: "none" } }}
         >
           {props.children}
@@ -34,6 +36,7 @@ export default function SectionHeading({ heading, subHeading }) {
           variant="subtitle1"
           color="text.secondary"
           gutterBottom
+          align="center"
           sx={{
             display: { xs: "none", md: "block" },
           }}
@@ -44,6 +47,7 @@ export default function SectionHeading({ heading, subHeading }) {
           variant="subtitle1"
           color="text.secondary"
           gutterBottom
+          align="center"
           sx={{
             display: { xs: "block", md: "none" },
             //color: theme.palette.secondary.light,

@@ -88,6 +88,7 @@ export default function SectionWrapper(props) {
           px: { xs: 1, md: 10 },
           pt: upperPaddingCheck(),
           pb: lowerPaddingCheck(),
+          mt: footer && gridDistance + "px",
         }}
       >
         {topDistance & deviderTop ? (
