@@ -15,7 +15,7 @@ export default function ContainedActionButton(props) {
   const backgroundColorHoverSelecter = {
     outlined: props.secondaryColor
       ? theme.palette.secondary.light
-      : theme.palette.primary.light,
+      : theme.palette.error.light,
     contained: props.secondaryColor
       ? theme.palette.secondary.light
       : theme.palette.error.light,
@@ -33,8 +33,8 @@ export default function ContainedActionButton(props) {
   const borderColorSelecter = {
     outlined: props.secondaryColor
       ? theme.palette.secondary.main
-      : theme.palette.primary.main,
-    contained: props.secondaryColor ? "#FFF" : "#FFF",
+      : theme.palette.error.main,
+    contained: "#FFFF",
   };
 
   //const backgroundColor = props.variant == "outlined" ? "none" : theme.palette.secondary.main;

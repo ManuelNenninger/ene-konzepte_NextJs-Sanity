@@ -50,6 +50,10 @@ const Index = ({ pages = {}, footer = {} }) => {
           moduleName={"testimonial"}
           //content={content}
         />
+        <Module
+          moduleName={"conviction"}
+          //content={content}
+        />
 
         {/* {revalidatedPages.pageBuilder?.map(function (obj, index) {
           console.log({ ...Object.values(obj)[0] });

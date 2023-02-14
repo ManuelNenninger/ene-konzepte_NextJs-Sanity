@@ -5,13 +5,7 @@ import PortfolioSection from "src/components/organisms/portfolio";
 import InfoBande from "src/components/organisms/infobande";
 import AgreementSection from "src/components/organisms/agreement";
 import TestimonialSection from "src/components/organisms/testimonial";
-// import AgreementSection from "../organisms/agreementsection";
-// import ProcessTimeline from "../organisms/processtimeline";
-// import AboutSection from "../organisms/aboutsection";
-// import OfferSection from "../organisms/offersection";
-// import BlockSite from "../organisms/blocksite";
-// import PortfolioSection from "../organisms/portfoliosection";
-// import VisionSection from "../organisms/visionsection";
+import ConvictionSection from "src/components/organisms/conviction";
 
 const Fallback = (props) => {
   return <h1>Ups. No Data found.</h1>;
@@ -25,6 +19,7 @@ export const Module = ({ content, moduleName }) => {
       infoBande: InfoBande,
       agreement: AgreementSection,
       testimonial: TestimonialSection,
+      conviction: ConvictionSection,
       // process: ProcessTimeline,
       // about: AboutSection,
       portfolio: PortfolioSection,
