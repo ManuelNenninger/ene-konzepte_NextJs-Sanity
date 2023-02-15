@@ -43,6 +43,14 @@ const Post = ({ post = {}, footer = {}, preview = false }) => {
             moduleName={"imageCarousel"}
             //content={content}
           />
+          <Module
+            moduleName={"detailedDescribtion"}
+            //content={content}
+          />
+          <Module
+            moduleName={"conviction"}
+            //content={content}
+          />
         </Layout>
       </>
     );
