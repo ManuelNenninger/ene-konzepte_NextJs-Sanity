@@ -6,6 +6,7 @@ import InfoBande from "src/components/organisms/infobande";
 import AgreementSection from "src/components/organisms/agreement";
 import TestimonialSection from "src/components/organisms/testimonial";
 import ConvictionSection from "src/components/organisms/conviction";
+import SpecificationsBanner from "src/components/organisms/specificationbanner";
 
 const Fallback = (props) => {
   return <h1>Ups. No Data found.</h1>;
@@ -20,6 +21,7 @@ export const Module = ({ content, moduleName }) => {
       agreement: AgreementSection,
       testimonial: TestimonialSection,
       conviction: ConvictionSection,
+      specification: SpecificationsBanner,
       // process: ProcessTimeline,
       // about: AboutSection,
       portfolio: PortfolioSection,

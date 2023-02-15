@@ -29,9 +29,16 @@ const Post = ({ post = {}, footer = {}, preview = false }) => {
     return (
       <>
         {/* {Object.keys(seo).length !== 0 && <SeoHead seo={seo} slug={slug} />} */}
-        <Layout footer={footer}>
+        <Layout footer={footer != null ? footer : undefined}>
           {preview && <PreviewAlert />}
-          <h1>Der Title deines Blogs ist: {post.title}</h1>
+          <Module
+            moduleName={"hero"}
+            //content={content}
+          />
+          <Module
+            moduleName={"specification"}
+            //content={content}
+          />
         </Layout>
       </>
     );

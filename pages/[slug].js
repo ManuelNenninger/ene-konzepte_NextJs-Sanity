@@ -9,7 +9,7 @@ import { getPageData, getFooterData } from "lib/api";
 import { useGetPages } from "src/components/atoms/fetcher/fetch";
 import PreviewAlert from "src/components/atoms/actions/previewalert";
 
-export default function Site({ pages = {}, footer = {}, preview = false }) {
+export default function Site({ pages = {}, footer, preview = false }) {
   const { seo = {}, slug = "" } = pages;
   const router = useRouter();
 
@@ -31,9 +31,13 @@ export default function Site({ pages = {}, footer = {}, preview = false }) {
     return (
       <>
         {Object.keys(seo).length !== 0 && <SeoHead seo={seo} slug={slug} />}
-        <Layout footer={footer}>
+        <Layout footer={footer != null ? footer : undefined}>
           {preview && <PreviewAlert />}
-          {revalidatedPages.pageBuilder?.map(function (obj, index) {
+          <Module
+            moduleName={"hero"}
+            //content={content}
+          />
+          {/* {revalidatedPages.pageBuilder?.map(function (obj, index) {
             console.log({ ...Object.values(obj)[0] });
             //console.log("Module Name ist: ", Object.keys(obj)[0]);
             const content = { ...Object.values(obj)[0] };
@@ -44,7 +48,7 @@ export default function Site({ pages = {}, footer = {}, preview = false }) {
                 content={content}
               />
             );
-          })}
+          })} */}
         </Layout>
       </>
     );
