@@ -39,6 +39,10 @@ const Post = ({ post = {}, footer = {}, preview = false }) => {
             moduleName={"specification"}
             //content={content}
           />
+          <Module
+            moduleName={"imageCarousel"}
+            //content={content}
+          />
         </Layout>
       </>
     );

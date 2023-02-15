@@ -60,7 +60,7 @@ export default function SectionWrapper(props) {
       if (typeof fullViewHeight !== "undefined") {
         return "100vh";
       } else {
-        return "50vh";
+        return "none";
       }
     }
   };
