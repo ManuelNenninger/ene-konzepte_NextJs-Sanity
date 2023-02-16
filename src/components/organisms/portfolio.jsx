@@ -62,7 +62,7 @@ export default function Portfolio() {
                 const propertyURL = new URL(link); //fuer TS URL
 
                 return (
-                  <Grid item xs={12} md={6} key={index}>
+                  <Grid item xs={12} md={6} key={propertyName + index}>
                     <PropertyCard
                       propertyImage={propertyImage}
                       propertyName={propertyName}

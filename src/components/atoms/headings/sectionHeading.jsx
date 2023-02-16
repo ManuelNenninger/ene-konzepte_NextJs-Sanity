@@ -66,6 +66,7 @@ export default function SectionHeading({ heading, subHeading }) {
         direction="column"
         justifyContent="flex-start"
         alignItems="center"
+        sx={{ px: { md: 20 } }}
       >
         <Grid item xs={12}>
           <Subheading>{subHeading}</Subheading>

@@ -9,6 +9,7 @@ import ConvictionSection from "src/components/organisms/conviction";
 import SpecificationsBanner from "src/components/organisms/specificationbanner";
 import ImageCarousel from "src/components/organisms/imagecarousel";
 import DetailedDescribtion from "src/components/organisms/detailedDescribtion";
+import EmployeesSection from "src/components/organisms/employees";
 
 const Fallback = (props) => {
   return <h1>Ups. No Data found.</h1>;
@@ -26,6 +27,7 @@ export const Module = ({ content, moduleName }) => {
       specification: SpecificationsBanner,
       imageCarousel: ImageCarousel,
       detailedDescribtion: DetailedDescribtion,
+      employees: EmployeesSection,
       // process: ProcessTimeline,
       // about: AboutSection,
       portfolio: PortfolioSection,
