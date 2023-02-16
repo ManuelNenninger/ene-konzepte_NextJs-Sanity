@@ -25,6 +25,12 @@ const Post = ({ post = {}, footer = {}, preview = false }) => {
     return <Fullpageloader />;
   }
 
+  const DefauldContentHero = {
+    title: "Lorem Haus am Rande Münchens",
+    describtion: "München, Neuhausen Musterstrasse 2",
+    mainImage: null,
+  };
+
   if (!router.isFallback && post?.slug) {
     return (
       <>
@@ -33,7 +39,7 @@ const Post = ({ post = {}, footer = {}, preview = false }) => {
           {preview && <PreviewAlert />}
           <Module
             moduleName={"hero"}
-            //content={content}
+            content={{ darkBackgroundColor: false, ...DefauldContentHero }}
           />
           <Module
             moduleName={"specification"}

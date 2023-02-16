@@ -1,7 +1,5 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
 
 import SectionWrapper from "src/components/atoms/wrapperElements/sectionWrapper";
 import PropertyCard from "src/components/atoms/portfolio/propertyCard";
@@ -36,7 +34,7 @@ const propertyArray = [
 
 export default function Portfolio() {
   return (
-    <SectionWrapper fullDistanceTop>
+    <SectionWrapper fullDistanceTop bottomDistance>
       <Grid
         container
         direction="column"

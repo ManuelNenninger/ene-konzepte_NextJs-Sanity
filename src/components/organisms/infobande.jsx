@@ -5,13 +5,16 @@ import Typography from "@mui/material/Typography";
 import SectionWrapper from "src/components/atoms/wrapperElements/sectionWrapper";
 import ArrowButton from "src/components/atoms/buttons/arrowButton";
 
-export default function BoxSx() {
+export default function BoxSx({ content }) {
+  const { darkBackgroundColor = true } = content != null ? content : {};
+
   const Heading = (props) => {
     return (
       <>
         <Typography
           variant="h3"
           gutterBottom
+          color={darkBackgroundColor && "text.tertiary"}
           sx={{
             fontWeight: 400,
             pr: { xs: 0, md: 30 },
@@ -23,6 +26,7 @@ export default function BoxSx() {
         <Typography
           variant="h4"
           gutterBottom
+          color={darkBackgroundColor && "text.tertiary"}
           sx={{
             fontWeight: 400,
             pr: { xs: 0, md: 30 },
@@ -47,12 +51,17 @@ export default function BoxSx() {
         >
           {" "}
           <Grid item xs={12}>
-            <Typography variant="subtitle1" component="h1" gutterBottom>
+            <Typography
+              variant="subtitle1"
+              component="h1"
+              gutterBottom
+              color={darkBackgroundColor && "text.tertiary"}
+            >
               {children}
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <ArrowButton buttonURL={"/"} /> {/*change URL*/}
+            <ArrowButton darkBackgroundColor buttonURL={"/"} /> {/*change URL*/}
           </Grid>
         </Grid>
       </>
@@ -60,7 +69,11 @@ export default function BoxSx() {
   };
 
   return (
-    <SectionWrapper fullDistanceTop>
+    <SectionWrapper
+      topDistance
+      bottomDistance
+      secondaryBackgroundColor={darkBackgroundColor}
+    >
       <Grid
         container
         direction="row"

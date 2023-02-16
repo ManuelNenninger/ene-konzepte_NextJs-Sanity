@@ -25,13 +25,17 @@ export default function BoxSx() {
           >
             <Grid item xs={12}>
               {" "}
-              <Typography variant="h4" gutterBottom>
+              <Typography variant="h4" gutterBottom color="text.tertiary">
                 {title}
               </Typography>
             </Grid>
             <Grid item xs={12}>
               {" "}
-              <Typography variant="subtitle1" gutterBottom>
+              <Typography
+                variant="subtitle1"
+                gutterBottom
+                color="text.quaternary"
+              >
                 {value}
               </Typography>
             </Grid>
@@ -42,7 +46,7 @@ export default function BoxSx() {
   };
 
   return (
-    <SectionWrapper topDistance bottomDistance>
+    <SectionWrapper topDistance bottomDistance secondaryBackgroundColor>
       <Grid
         container
         direction="row"

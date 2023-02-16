@@ -10,6 +10,7 @@ export default function SectionWrapper(props) {
     lowerWave,
     footer,
     secondaryBackgroundColor,
+    tertiaryBackgroundColor,
     topDistance,
     firstSectionDistance,
     bottomDistance,
@@ -64,6 +65,17 @@ export default function SectionWrapper(props) {
       }
     }
   };
+  const backgroundColorCheck = () => {
+    if (typeof secondaryBackgroundColor !== "undefined") {
+      return theme.palette.secondary.main;
+    } else {
+      if (typeof tertiaryBackgroundColor !== "undefined") {
+        return theme.palette.tertiary.main;
+      } else {
+        return theme.palette.primary.main;
+      }
+    }
+  };
 
   return (
     <Box>
@@ -82,9 +94,7 @@ export default function SectionWrapper(props) {
         sx={{
           minHeight: heightCheck(),
           maxWidth: "1680px",
-          backgroundColor: secondaryBackgroundColor
-            ? theme.palette.secondary.main
-            : theme.palette.primary.main,
+          backgroundColor: backgroundColorCheck(),
           px: { xs: 1, md: 10 },
           pt: upperPaddingCheck(),
           pb: lowerPaddingCheck(),

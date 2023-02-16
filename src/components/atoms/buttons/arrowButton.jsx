@@ -5,7 +5,7 @@ import Button, { ButtonProps } from "@mui/material/Button";
 import Link from "next/link";
 import { useTheme } from "@mui/material/styles";
 
-export default function ArrowButton({ buttonURL }) {
+export default function ArrowButton({ buttonURL, darkBackgroundColor }) {
   const theme = useTheme();
   const ColorButton = styled(Button)(({ theme }) => ({
     //Für TS check Documentation in MUI
@@ -14,7 +14,9 @@ export default function ArrowButton({ buttonURL }) {
     border: 1,
     borderColor: "black",
     "&:hover": {
-      color: theme.palette.secondary.light, //Secondary light
+      color: darkBackgroundColor
+        ? theme.palette.primary.light
+        : theme.palette.secondary.light, //Secondary light
       backgroundColor: theme.palette.primary.main,
     },
     "&:active": {
@@ -26,12 +28,29 @@ export default function ArrowButton({ buttonURL }) {
       backgroundColor: theme.palette.error.main, //Error Color
     },
   }));
+
   return (
     <>
-      <ColorButton endIcon={<ArrowRightAltIcon />}>
+      <ColorButton
+        endIcon={
+          <ArrowRightAltIcon
+            sx={{
+              color: darkBackgroundColor
+                ? theme.palette.primary.main
+                : theme.palette.secondary.main,
+            }}
+          />
+        }
+      >
         <Typography
           variant="body2"
-          sx={{ borderBottom: 1, borderColor: theme.palette.secondary.main }}
+          color={darkBackgroundColor && "text.tertiary"}
+          sx={{
+            borderBottom: 1,
+            borderColor: darkBackgroundColor
+              ? theme.palette.primary.main
+              : theme.palette.secondary.main,
+          }}
         >
           <Link href={buttonURL ? buttonURL : "/"}>See details </Link>
         </Typography>

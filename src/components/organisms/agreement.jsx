@@ -7,7 +7,7 @@ import AgreementGrid from "src/components/atoms/agreement/agreementgrid";
 
 export default function Agreement() {
   return (
-    <SectionWrapper fullDistanceTop>
+    <SectionWrapper topDistance bottomDistance>
       <Grid
         container
         direction="column"

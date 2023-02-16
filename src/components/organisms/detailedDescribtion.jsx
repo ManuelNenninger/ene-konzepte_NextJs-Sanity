@@ -31,7 +31,7 @@ export default function DetailedDescribtion({ content }) {
   };
 
   return (
-    <SectionWrapper fullDistanceTop>
+    <SectionWrapper topDistance bottomDistance tertiaryBackgroundColor>
       <Grid
         container
         direction="column"

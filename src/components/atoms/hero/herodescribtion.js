@@ -2,7 +2,11 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 
-export default function HeroDescribtion(props) {
+export default function HeroDescribtion({
+  darkBackgroundColor,
+  title,
+  describtion,
+}) {
   const theme = useTheme();
 
   const Heading = (props) => {
@@ -12,6 +16,7 @@ export default function HeroDescribtion(props) {
           variant="h2"
           component="h1"
           gutterBottom
+          color={darkBackgroundColor && "text.tertiary"}
           sx={{ display: { xs: "none", md: "block" }, fontWeight: 400 }}
         >
           {props.children}
@@ -20,6 +25,7 @@ export default function HeroDescribtion(props) {
           variant="h3"
           component="h1"
           gutterBottom
+          color={darkBackgroundColor && "text.tertiary"}
           sx={{ display: { xs: "block", md: "none" } }}
         >
           {props.children}
@@ -34,9 +40,9 @@ export default function HeroDescribtion(props) {
           variant="subtitle1"
           component="h2"
           gutterBottom
+          color={darkBackgroundColor ? "text.quaternary" : "text.secondary"}
           sx={{
             display: { xs: "none", md: "block" },
-            color: theme.palette.secondary.light,
           }}
         >
           {props.children}
@@ -45,9 +51,9 @@ export default function HeroDescribtion(props) {
           variant="subtitle1"
           component="h2"
           gutterBottom
+          color={darkBackgroundColor ? "text.quaternary" : "text.secondary"}
           sx={{
             display: { xs: "block", md: "none" },
-            color: theme.palette.secondary.light,
           }}
         >
           {props.children}
@@ -62,13 +68,16 @@ export default function HeroDescribtion(props) {
         direction="column"
         justifyContent="flex-start"
         alignItems="flex-start"
-        sx={{ pb: { xs: 5, mb: 10 }, width: { xs: "100%", md: "50%" } }}
+        sx={{
+          pb: { xs: 5, mb: 10 },
+          width: { xs: "100%", md: "50%" },
+        }}
       >
         <Grid item xs={12} sx={{ width: "100%" }}>
-          <Subheading>Munich based Real Estate</Subheading>
+          <Subheading>{describtion}</Subheading>
         </Grid>
         <Grid item xs={12}>
-          <Heading>Außergewöhnliches Design. Herausragender Service.</Heading>
+          <Heading>{title}</Heading>
         </Grid>{" "}
       </Grid>
     </>

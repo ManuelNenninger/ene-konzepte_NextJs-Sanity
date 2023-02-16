@@ -75,7 +75,7 @@ export default function Conviction() {
   };
 
   return (
-    <SectionWrapper fullDistanceTop>
+    <SectionWrapper topDistance>
       <Grid
         container
         direction="row"

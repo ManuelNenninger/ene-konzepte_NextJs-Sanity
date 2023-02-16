@@ -57,7 +57,7 @@ export default function Footer({ content = {} }) {
           {footersocial?.instagram && (
             <Grid item>
               <IconButton
-                color="secondary"
+                color="primary"
                 aria-label="add an alarm"
                 href={footersocial.instagram}
               >
@@ -68,7 +68,7 @@ export default function Footer({ content = {} }) {
           {footersocial?.facebook && (
             <Grid item>
               <IconButton
-                color="secondary"
+                color="primary"
                 aria-label="add an alarm"
                 href={footersocial.facebook}
               >
@@ -79,7 +79,7 @@ export default function Footer({ content = {} }) {
           {footersocial?.twitter && (
             <Grid item>
               <IconButton
-                color="secondary"
+                color="primary"
                 aria-label="add an alarm"
                 href={footersocial.twitter}
               >
@@ -103,7 +103,7 @@ export default function Footer({ content = {} }) {
             alignItems={{ xs: "center", md: "flex-start" }}
           >
             <Grid item>
-              <Typography variant="h4" gutterBottom>
+              <Typography variant="h4" gutterBottom color="text.tertiary">
                 Socials
               </Typography>
             </Grid>
@@ -133,7 +133,7 @@ export default function Footer({ content = {} }) {
                   spacing={1}
                 >
                   <Grid item xs={12}>
-                    <Typography variant="h4" gutterBottom sx={{}}>
+                    <Typography variant="h4" gutterBottom color="text.tertiary">
                       {obj.metaTitle}
                     </Typography>
                   </Grid>
@@ -144,7 +144,7 @@ export default function Footer({ content = {} }) {
                           <Link href={linkObj.url}>
                             <Typography
                               variant="h6"
-                              color="text.secondary"
+                              color="text.quaternary"
                               sx={{ fontWeight: 300 }}
                               gutterBottom
                             >
@@ -202,6 +202,7 @@ export default function Footer({ content = {} }) {
               variant="h3"
               gutterBottom
               align="center"
+              color="text.tertiary"
               sx={{ display: { xs: "block", md: "none" } }}
             >
               {Object.keys(content).length !== 0 ? brandname : "Brandnamé"}
@@ -209,6 +210,7 @@ export default function Footer({ content = {} }) {
             <Typography
               variant="h3"
               gutterBottom
+              color="text.tertiary"
               sx={{ display: { xs: "none", md: "block" } }}
             >
               {Object.keys(content).length !== 0 ? brandname : "Brandnamé"}
@@ -218,7 +220,7 @@ export default function Footer({ content = {} }) {
             <Typography
               variant="h6"
               gutterBottom
-              color="text.secondary"
+              color="text.quaternary"
               align="center"
               sx={{ fontWeight: 400 }}
             >
@@ -231,7 +233,7 @@ export default function Footer({ content = {} }) {
   };
 
   return (
-    <SectionWrapper footer topDistance fullDistanceBottom>
+    <SectionWrapper footer topDistance bottomDistance secondaryBackgroundColor>
       <Grid
         container
         direction="row"

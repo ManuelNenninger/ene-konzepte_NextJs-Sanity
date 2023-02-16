@@ -95,12 +95,16 @@ export default function Carousel({ content }) {
     };
     return (
       <CustomeMobileStepper
-        sx={{ mt: { xs: 5, md: 10 } }}
+        sx={{
+          mt: { xs: 5, md: 10 },
+          backgroundColor: theme.palette.tertiary.main,
+        }}
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
         nextButton={
           <Button
+            color="secondary"
             size="small"
             onClick={handleNext}
             disabled={activeStep === maxSteps - 1}
@@ -114,7 +118,12 @@ export default function Carousel({ content }) {
           </Button>
         }
         backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+          <Button
+            color="secondary"
+            size="small"
+            onClick={handleBack}
+            disabled={activeStep === 0}
+          >
             {theme.direction === "rtl" ? (
               <KeyboardArrowRight />
             ) : (

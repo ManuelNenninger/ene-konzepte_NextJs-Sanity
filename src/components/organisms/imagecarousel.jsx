@@ -8,7 +8,7 @@ import SwiperCarousel from "src/components/atoms/imageCarousel/swiperImageCarous
 
 export default function BoxSx() {
   return (
-    <SectionWrapper fullDistanceTop>
+    <SectionWrapper topDistance bottomDistance>
       <Grid
         container
         direction="column"

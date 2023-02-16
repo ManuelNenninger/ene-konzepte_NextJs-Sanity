@@ -8,7 +8,7 @@ import SectionHeading from "src/components/atoms/headings/sectionHeading";
 
 export default function Testimonial() {
   return (
-    <SectionWrapper fullDistanceTop>
+    <SectionWrapper topDistance bottomDistance tertiaryBackgroundColor>
       <Grid
         container
         direction="column"

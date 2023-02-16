@@ -5,7 +5,7 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#FFFFF",
+      main: "#FFFF",
       light: "rgba( 255, 255, 255, 0.6 )",
       dark: "#FFF8F0",
     },
@@ -30,6 +30,8 @@ const theme = createTheme({
     text: {
       main: "#011640",
       secondary: "rgba(1,22,64, 0.7)",
+      tertiary: "#FFF8F0",
+      quaternary: "rgba( 255, 255, 255, 0.8 )",
     },
   },
   // typography: {
