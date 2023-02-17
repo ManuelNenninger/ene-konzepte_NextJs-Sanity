@@ -29,15 +29,19 @@ export default function DialogOrder({ open, handleClose, order }) {
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
               <Typography variant="body1" color="text.primary">
-                Hinterlass mir deine Mail und schreibe mir kurz wie ich dich
-                unterstützen kann.
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat, sed diam voluptua.
               </Typography>
               <Typography variant="body1" color="text.primary">
-                Bist Du interessiert an einer Blog Website? Einem eCommerce Shop
-                oder willst mir einfach nur Hallo sagen?
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                aliquyam erat,
               </Typography>
               <Typography variant="body1" color="text.primary">
-                Ich freue mich über jede Nachricht :)
+                At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+                dolor sit amet.
               </Typography>
             </DialogContentText>
           </DialogContent>

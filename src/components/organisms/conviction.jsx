@@ -2,6 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import { useAppContext } from "src/appContext";
 
 import SectionWrapper from "src/components/atoms/wrapperElements/sectionWrapper";
 import ActionButton from "src/components/atoms/buttons/actionButton";
@@ -9,6 +10,11 @@ import ActionButton from "src/components/atoms/buttons/actionButton";
 import PropertyDefault from "public/DefaultConviction.jpg";
 
 export default function Conviction() {
+  const { setStates } = useAppContext();
+  const handleClickOpen = () => {
+    setStates.dialogComponente(true);
+  };
+
   const ContentGrid = () => {
     return (
       <>
@@ -45,7 +51,11 @@ export default function Conviction() {
               justifyContent="center"
               alignItems="flex-start"
             >
-              <ActionButton variant="contained" text="Contect Us" />
+              <ActionButton
+                variant="contained"
+                text="Contect Us"
+                onClick={handleClickOpen}
+              />
             </Grid>
           </Grid>
         </Grid>

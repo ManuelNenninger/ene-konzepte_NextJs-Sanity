@@ -4,6 +4,7 @@ import Head from "next/head";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider } from "@emotion/react";
+import { AppWrapper } from "src/appContext";
 import theme from "../styles/theme";
 import "styles/globals.css";
 //import SeoHead from "../src/components/seoComponents/seoHead";
@@ -45,34 +46,35 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        {/*<SeoHead
+        <AppWrapper>
+          {/*<SeoHead
               canonicalUrl={appProps.router.pathname}
               title={specialTitle[appProps.router.pathname] ? specialTitle[appProps.router.pathname] : titelCreater(router.pathname)}
             />*/}
-        {/* Google Tag Manager - Global base code */}
-        <Script
-          id="gtag-base"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
+          {/* Google Tag Manager - Global base code */}
+          <Script
+            id="gtag-base"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
                     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
                   })(window,document,'script','dataLayer', '${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID}');
                   `,
-          }}
-        />
-        {/* Global Site Tag (gtag.js) - Google Analytics */}
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-        />
-        <Script
-          id="gtag-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
+            }}
+          />
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          <Script
+            strategy="afterInteractive"
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+          />
+          <Script
+            id="gtag-init"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
                     gtag('js', new Date());
@@ -80,9 +82,10 @@ export default function MyApp(props) {
                       page_path: window.location.pathname,
                     });
                   `,
-          }}
-        />
-        <Component {...pageProps} />
+            }}
+          />
+          <Component {...pageProps} />
+        </AppWrapper>
       </ThemeProvider>
     </CacheProvider>
   );

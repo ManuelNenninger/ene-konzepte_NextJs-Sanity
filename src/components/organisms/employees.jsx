@@ -1,5 +1,6 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
+import { useAppContext } from "src/appContext";
 
 import SectionWrapper from "src/components/atoms/wrapperElements/sectionWrapper";
 import SectionHeading from "src/components/atoms/headings/sectionHeading";
@@ -41,7 +42,11 @@ const DefaultContent = [
   },
 ];
 
-export default function BoxSx() {
+export default function EmployeesGrid() {
+  const { setStates } = useAppContext();
+  const handleClickOpen = () => {
+    setStates.dialogComponente(true);
+  };
   return (
     <SectionWrapper topDistance bottomDistance>
       <Grid
@@ -79,7 +84,11 @@ export default function BoxSx() {
             justifyContent="center"
             alignItems="flex-start"
           >
-            <ActionButton variant="contained" text={"Contect us"} />
+            <ActionButton
+              variant="contained"
+              text={"Contect us"}
+              onClick={handleClickOpen}
+            />
           </Grid>
         </Grid>
       </Grid>

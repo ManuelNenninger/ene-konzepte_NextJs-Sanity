@@ -52,7 +52,7 @@ export default function CheckboxLabels() {
 
   return (
     <form
-      action="https://risao.us18.list-manage.com/subscribe/post?u=b5e1063e4d2a9f361d48469f0&amp;id=8ebe07aea4&amp;f_id=00ff08e7f0"
+      //action="https://risao.us18.list-manage.com/subscribe/post?u=b5e1063e4d2a9f361d48469f0&amp;id=8ebe07aea4&amp;f_id=00ff08e7f0"
       method="post"
       id="mc-embedded-subscribe-form"
       name="mc-embedded-subscribe-form"

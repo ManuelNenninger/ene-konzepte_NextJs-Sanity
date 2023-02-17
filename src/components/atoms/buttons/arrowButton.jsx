@@ -17,7 +17,6 @@ export default function ArrowButton({ buttonURL, darkBackgroundColor }) {
       color: darkBackgroundColor
         ? theme.palette.primary.light
         : theme.palette.secondary.light, //Secondary light
-      backgroundColor: theme.palette.primary.main,
     },
     "&:active": {
       boxShadow: "none",
