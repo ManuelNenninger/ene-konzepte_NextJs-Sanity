@@ -9,6 +9,25 @@ export const blocksgrid = `
   },
 `;
 
+export const corporateValue = `
+  _type == 'corporateValue' => {
+    _type,
+    _key,
+    title,
+    describtion,
+  },
+`;
+
+export const employeeComponent = `
+  _type == 'employeeComponent' => {
+    _type,
+    _key,
+    name,
+    position,
+    mainImage,
+  },
+`;
+
 // Construct our content "modules" GROQ
 export const modules = `
   _type == 'grid' => {
@@ -32,17 +51,58 @@ export const modules = `
         }
       }
     },
-  _type == 'herosection' => {
+  _type == 'heroSection' => {
     "hero": {
       _type,
       _key,
-      heroTitle,
-      heroDescribtion,
+      title,
+      describtion,
       mainImage,
-      "primaryCallToAction": primaryCallToAction->{url,linkText},
+
+    }
+  },
+  _type == 'infoBande' => {
+    "infoBande": {
+      _type,
+      _key,
+      title,
+      describtion,
+      arrowButton,
+      button->,
+    }
+  },
+  _type == 'corporateValueSection' => {
+    "corporatevalues": {
+      _type,
+      _key,
+      heading,
+      corporateValueArray[]{
+        ${corporateValue}
+      },
+      mainImage,
+    }
+  },
+  _type == 'employeesSection' => {
+    "employees": {
+      _type,
+      _key,
+      heading,
+      employeeArray[]{
+        ${employeeComponent}
+      },
+      contactButton,
+    }
+  },
+  _type == 'bigPortfolioSection' => {
+    "bigPortfolio": {
+      _type,
+      _key,
+      showPortfolioButton,
+      "portfolio": *[_type == "post" && publishedAt < now()][0...2],
     }
   },
 `;
+
 export const footermodule = `
 brandname,
 footersocial,

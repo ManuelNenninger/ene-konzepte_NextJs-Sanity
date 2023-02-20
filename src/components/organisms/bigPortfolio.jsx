@@ -1,10 +1,11 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
+import { useGetAllPosts } from "src/components/atoms/fetcher/fetch";
 
-import SectionWrapper from "src/components/atoms/wrapperElements/sectionWrapper";
 import PropertyCard from "src/components/atoms/portfolio/propertyCard";
-import SectionHeading from "src/components/atoms/headings/sectionHeading";
 import ActionButton from "src/components/atoms/buttons/actionButton";
+import SectionWrapper from "src/components/atoms/wrapperElements/sectionWrapper";
+
 //Default Images
 import Property1 from "public/property1.png";
 import Property2 from "public/property2.jpg";
@@ -32,7 +33,27 @@ const propertyArray = [
   },
 ];
 
-export default function Portfolio() {
+export default function BigPortfolio({ content }) {
+  const { portfolio = propertyArray, showPortfolioButton = true } =
+    content != null ? content : {};
+  //   const { data, isValidating, size, setSize, hitEnd } = useGetAllPosts({
+  //     initialData: [portfolio],
+  //     preview: false,
+  //   });
+
+  {
+    /* 
+   * Um die pagination Data zu laden, verwende folgende syntax:
+   * Die pagination data sieht aus wie: [[1,2,3], [3,4,5]]
+        {data &&
+          data.map((parentArray) =>
+            parentArray.map((post) => {
+              return <h1>{post.title}</h1>;
+            })
+          )} 
+        */
+  }
+
   return (
     <SectionWrapper fullDistanceTop bottomDistance>
       <Grid
@@ -42,12 +63,6 @@ export default function Portfolio() {
         alignItems="center"
         spacing={{ xs: 5, md: 10 }}
       >
-        <Grid item xs={12}>
-          <SectionHeading
-            heading={"Our best offers"}
-            subHeading={"Luxury at its bext"}
-          />
-        </Grid>
         <Grid item xs={12}>
           <Grid
             container
@@ -59,15 +74,15 @@ export default function Portfolio() {
                 { propertyImage, propertyName, propertyDescribtion, link },
                 index
               ) => {
-                //const propertyURL = new URL(link); //fuer TS URL
+                const propertyURL = new URL(link); //fuer TS URL
 
                 return (
-                  <Grid item xs={12} md={6} key={propertyName + index}>
+                  <Grid item xs={12} md={6} key={index}>
                     <PropertyCard
                       propertyImage={propertyImage}
                       propertyName={propertyName}
                       propertyDescribtion={propertyDescribtion}
-                      propertyURL={link}
+                      propertyURL={propertyURL}
                     />
                   </Grid>
                 );
@@ -81,14 +96,22 @@ export default function Portfolio() {
                 alignItems="flex-start"
               >
                 <ActionButton
+                  //disabled={hitEnd}
+                  disabled={true}
                   variant="contained"
-                  text={"Mehr"}
-                  href={"/immobilien"}
+                  text={"Load More"}
+                  onClick={() => setSize(size + 1)}
                 />
               </Grid>
             </Grid>
           </Grid>
         </Grid>
+        {/* {data &&
+          data.map((parentArray) =>
+            parentArray.map((post) => {
+              return <h1>{post.title}</h1>;
+            })
+          )} */}
       </Grid>
     </SectionWrapper>
   );

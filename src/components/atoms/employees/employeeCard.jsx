@@ -33,7 +33,7 @@ export default function MediaCard({
       <CardMedia
         component="img"
         sx={{ height: 300 }}
-        image={imageSrc} //ggf. .src
+        image={imageSrc}
         title={name}
       />
       <CardContent sx={{ pt: 5 }}>

@@ -11,6 +11,7 @@ import ImageCarousel from "src/components/organisms/imagecarousel";
 import DetailedDescribtion from "src/components/organisms/detailedDescribtion";
 import EmployeesSection from "src/components/organisms/employees";
 import CorporateValuesSection from "src/components/organisms/corporatevalues";
+import BigPortfolioSection from "src/components/organisms/bigPortfolio";
 
 const Fallback = (props) => {
   return <h1>Ups. No Data found.</h1>;
@@ -30,6 +31,7 @@ export const Module = ({ content, moduleName }) => {
       detailedDescribtion: DetailedDescribtion,
       employees: EmployeesSection,
       corporatevalues: CorporateValuesSection,
+      bigPortfolio: BigPortfolioSection,
       // process: ProcessTimeline,
       // about: AboutSection,
       portfolio: PortfolioSection,

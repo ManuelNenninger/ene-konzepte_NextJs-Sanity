@@ -5,7 +5,7 @@ import { Module } from "src/components/templates/modulepicker";
 import NotFoundPage from "pages/404";
 import Fullpageloader from "src/components/atoms/actions/fullpageloader";
 import Layout from "src/layout";
-import { getTestData } from "lib/api";
+import { getTestData, getAllPosts } from "lib/api";
 import { useRouter } from "next/router";
 
 const Index = ({ pages = {}, footer = {} }) => {
@@ -76,7 +76,8 @@ const Index = ({ pages = {}, footer = {} }) => {
 export async function getStaticProps() {
   //you can delete getTestData
   const posts = await getTestData();
-
+  // const testPostsAll = await getAllPosts(false, 0);
+  // console.log("testPostsAll: ", testPostsAll);
   return {
     props: {
       posts,

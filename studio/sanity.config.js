@@ -25,7 +25,7 @@ export default defineConfig({
         params.set('preview', 'true')
         params.set('secret', 'rheufufhg')
         params.set('type', document._type)
-        params.set('slug', document.slug.current)
+        params.set('slug', document?.slug?.current)
         // return `${projectUrl}/api/preview?secret=${previewSecret}&slug=${document.slug.current}`
         // return `http://localhost:3000/api/preview?secret=rheufufhg&slug=${document.slug.current}`
         //return `http://localhost:3000/posts/${slug}?${params}`

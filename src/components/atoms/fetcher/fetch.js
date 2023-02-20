@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import useSWRInfinite from "swr/infinite";
 
 export async function costumeFetcher([url, token]) {
   //Token können hier API-Parameter sein. Sie werden von swr chached und sind teil des Keys.
@@ -32,6 +33,32 @@ export const useGetPages = ({ initialData, slug, preview }) => {
       revalidateOnMount: false,
     }
   );
+};
+
+export const useGetAllPosts = ({ initialData, offset, preview }) => {
+  const getKey = (index, previousPageData) => {
+    return [`api/posts`, { offset: index * 2, preview: preview }];
+  };
+  const results = useSWRInfinite(
+    getKey,
+    costumeFetcher,
+    {
+      fallbackData: initialData,
+    },
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+      revalidateOnMount: false,
+    }
+  );
+  //Validate, if End is reached
+  let hitEnd = false;
+  const { data } = results;
+  if (data) {
+    hitEnd = data[data.length - 1].length === 0;
+  }
+  return { ...results, hitEnd };
 };
 
 {

@@ -27,7 +27,11 @@ export default defineType({
       title: 'Page Content',
       type: 'array',
       of: [
-        {type: 'herosection'},
+        {type: 'heroSection'},
+        {type: 'infoBande'},
+        {type: 'corporateValueSection'},
+        {type: 'employeesSection'},
+        {type: 'bigPortfolioSection'},
         // {
         //   title: 'Reusable Section',
         //   type: 'reference',
