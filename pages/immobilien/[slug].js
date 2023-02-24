@@ -80,6 +80,7 @@ export async function getStaticProps(context) {
   const { slug = "" } = context.params;
   const { preview = false, previewData } = context;
   const post = await getPostData(slug, preview);
+  const footer = await getFooterData();
 
   return {
     props: {
