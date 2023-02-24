@@ -36,7 +36,7 @@ export default async function enablePreview(req, res) {
     }
 
     res.setPreviewData({});
-    res.writeHead(307, { Location: `/post/${post.slug}` });
+    res.writeHead(307, { Location: `/immobilien/${post.slug}` });
     res.end();
   }
 }
