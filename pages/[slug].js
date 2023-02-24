@@ -62,8 +62,10 @@ export async function getStaticProps(context) {
   const { slug = "" } = context.params;
   const { preview = false, previewData } = context;
   const pages = await getPageData(slug, preview);
-  const footer = await getFooterData();
-  console.log("Die Page Daten in GSP sind: " + pages);
+  //const footer = await getFooterData();
+  const footer = null;
+  console.log("Die Page Daten in GSP sind für  " + slug + " sind da.");
+  console.log(pages);
   return {
     props: {
       pages,

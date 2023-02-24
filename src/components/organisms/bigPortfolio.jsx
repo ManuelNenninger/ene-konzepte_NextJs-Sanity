@@ -74,7 +74,7 @@ export default function BigPortfolio({ content }) {
                 { propertyImage, propertyName, propertyDescribtion, link },
                 index
               ) => {
-                const propertyURL = new URL(link); //fuer TS URL
+                //const propertyURL = new URL(link); //fuer TS URL
 
                 return (
                   <Grid item xs={12} md={6} key={"Property_Card_" + index}>
@@ -82,7 +82,7 @@ export default function BigPortfolio({ content }) {
                       propertyImage={propertyImage}
                       propertyName={propertyName}
                       propertyDescribtion={propertyDescribtion}
-                      propertyURL={propertyURL}
+                      propertyURL={link}
                     />
                   </Grid>
                 );

@@ -67,6 +67,7 @@ export async function getStaticPaths() {
   const paths = await client.fetch(
     `*[_type == "post" && defined(slug.current)][].slug.current`
   );
+  console.log("Die Statischen Paths für Post sind: " + paths);
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
@@ -78,7 +79,10 @@ export async function getStaticProps(context) {
   const { slug = "" } = context.params;
   const { preview = false, previewData } = context;
   const post = await getPostData(slug, preview);
-  const footer = await getFooterData();
+  //const footer = await getFooterData();
+  const footer = {};
+  console.log("Die Post Daten in GSP sind für  " + slug + " sind da.");
+  console.log(post);
 
   return {
     props: {
