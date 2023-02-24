@@ -9,8 +9,8 @@ import { getPageData, getFooterData } from "lib/api";
 import { useGetPages } from "src/components/atoms/fetcher/fetch";
 import PreviewAlert from "src/components/atoms/actions/previewalert";
 
-export default function Site({ pages = {}, footer, preview = false }) {
-  const { seo = {}, slug = "" } = pages;
+export default function Site({ pages, footer, preview = false }) {
+  const { seo = null, slug = null } = pages != null ? pages : {};
   const router = useRouter();
 
   // const { data: revalidatedPages, error } = useGetPages({
@@ -30,7 +30,7 @@ export default function Site({ pages = {}, footer, preview = false }) {
   if (!router.isFallback && pages?.slug) {
     return (
       <>
-        {Object.keys(seo).length !== 0 && <SeoHead seo={seo} slug={slug} />}
+        {seo != null && <SeoHead seo={seo} slug={slug} />}
         <Layout footer={footer != null ? footer : undefined}>
           {preview && <PreviewAlert />}
           {pages.pageBuilder?.map(function (obj, index) {
@@ -51,7 +51,6 @@ export async function getStaticPaths() {
   const paths = await client.fetch(
     `*[_type == "page" && defined(slug.current)][].slug.current`
   );
-  console.log("Die Statischen Paths sind: " + paths);
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
     fallback: true,
@@ -62,10 +61,8 @@ export async function getStaticProps(context) {
   const { slug = "" } = context.params;
   const { preview = false, previewData } = context;
   const pages = await getPageData(slug, preview);
-  //const footer = await getFooterData();
-  const footer = null;
-  console.log("Die Page Daten in GSP sind für  " + slug + " sind da.");
-  console.log(pages);
+  const footer = await getFooterData();
+
   return {
     props: {
       pages,

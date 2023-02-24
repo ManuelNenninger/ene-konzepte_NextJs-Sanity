@@ -4,11 +4,11 @@ import Image from "next/image";
 import { urlFor } from "lib/sanity";
 
 export default function heroPicture({ mainImage, title }) {
-  console.log(mainImage);
   return (
     <>
       <Box className="unset-img" sx={{ display: "flex" }}>
-        <Image
+        <Box
+          component={Image}
           src={mainImage != null ? urlFor(mainImage).url() : HeroPicture}
           alt={title}
           className="custom-img"

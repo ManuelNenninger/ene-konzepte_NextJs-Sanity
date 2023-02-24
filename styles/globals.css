@@ -32,3 +32,10 @@ a {
   border-radius: 0%;
   /* border: 5px solid black; */
 }
+
+/* For width 600px (sm) and smaller: */
+@media only screen and (max-width: 600px) {
+  .custom-img {
+    aspect-ratio: 4 / 4 !important;
+  }
+}

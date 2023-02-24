@@ -8,7 +8,9 @@ import { useRouter } from "next/router";
 import { getFooterData, getPostData } from "lib/api";
 import PreviewAlert from "src/components/atoms/actions/previewalert";
 
-const Post = ({ post = {}, footer = {}, preview = false }) => {
+const Post = ({ post, pages, footer, preview = false }) => {
+  const { seo = null, slug = null } = pages != null ? pages : {};
+
   const router = useRouter();
 
   // const { data: revalidatedPages, error } = useGetPages({
@@ -34,7 +36,7 @@ const Post = ({ post = {}, footer = {}, preview = false }) => {
   if (!router.isFallback && post?.slug) {
     return (
       <>
-        {/* {Object.keys(seo).length !== 0 && <SeoHead seo={seo} slug={slug} />} */}
+        {seo != null && <SeoHead seo={seo} slug={slug} />}
         <Layout footer={footer != null ? footer : undefined}>
           {preview && <PreviewAlert />}
           <Module
@@ -67,7 +69,6 @@ export async function getStaticPaths() {
   const paths = await client.fetch(
     `*[_type == "post" && defined(slug.current)][].slug.current`
   );
-  console.log("Die Statischen Paths für Post sind: " + paths);
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
@@ -79,10 +80,6 @@ export async function getStaticProps(context) {
   const { slug = "" } = context.params;
   const { preview = false, previewData } = context;
   const post = await getPostData(slug, preview);
-  //const footer = await getFooterData();
-  const footer = {};
-  console.log("Die Post Daten in GSP sind für  " + slug + " sind da.");
-  console.log(post);
 
   return {
     props: {
