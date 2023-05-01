@@ -1,19 +1,19 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
 import SectionWrapper from "src/components/atoms/wrapperElements/sectionWrapper";
 
 const defaultContent = [
-  { title: "Preis", value: "500.000 EUR" },
-  { title: "Wohnfläche", value: "626 m^2" },
-  { title: "Zimmer", value: "6" },
-  { title: "Grundstück", value: "1024 m^2" },
+  { title: "Preis", describtion: "500.000 EUR" },
+  { title: "Wohnfläche", describtion: "626 m^2" },
+  { title: "Zimmer", describtion: "6" },
+  { title: "Grundstück", describtion: "1024 m^2" },
 ];
 
-export default function BoxSx() {
-  const GridItem = ({ title, value, index }) => {
+export default function BoxSx({ content }) {
+  const contentArray = content != null ? content : defaultContent;
+  const GridItem = ({ title, describtion, index }) => {
     return (
       <>
         <Grid item xs={12} md={6} lg={3} key={title + index}>
@@ -36,7 +36,7 @@ export default function BoxSx() {
                 gutterBottom
                 color="text.quaternary"
               >
-                {value}
+                {describtion}
               </Typography>
             </Grid>
           </Grid>
@@ -54,7 +54,7 @@ export default function BoxSx() {
         alignItems="flex-start"
         spacing={{ xs: 4, md: 5, lg: 0 }}
       >
-        {defaultContent.map((item, index) => {
+        {contentArray.map((item, index) => {
           return (
             <>
               <GridItem {...item} index={index} />

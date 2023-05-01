@@ -61,6 +61,32 @@ export const useGetAllPosts = ({ initialData, offset, preview }) => {
   return { ...results, hitEnd };
 };
 
+export const useGetAllInserate = ({ initialData, offset, preview }) => {
+  const getKey = (index, previousPageData) => {
+    return [`api/inserate`, { offset: index * 2, preview: preview }];
+  };
+  const results = useSWRInfinite(
+    getKey,
+    costumeFetcher,
+    {
+      fallbackData: initialData,
+    },
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+      revalidateOnMount: false,
+    }
+  );
+  //Validate, if End is reached
+  let hitEnd = false;
+  const { data } = results;
+  if (data) {
+    hitEnd = data[data.length - 1].length <= 1;
+  }
+  return { ...results, hitEnd };
+};
+
 {
   /*
 Via useSWR kannst Du die data cleint Side neu fetchen und validieren.

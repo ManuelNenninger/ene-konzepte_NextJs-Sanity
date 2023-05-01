@@ -6,7 +6,11 @@ import SectionWrapper from "src/components/atoms/wrapperElements/sectionWrapper"
 import SectionHeading from "src/components/atoms/headings/sectionHeading";
 import SwiperCarousel from "src/components/atoms/imageCarousel/swiperImageCarousel";
 
-export default function BoxSx() {
+export default function BoxSx({ content }) {
+  const {
+    heading = { heading: "Our best offers", subheading: "Luxury at its best" },
+    inseratImageArray = null,
+  } = content != null ? content : {};
   return (
     <SectionWrapper topDistance bottomDistance>
       <Grid
@@ -18,12 +22,12 @@ export default function BoxSx() {
       >
         <Grid item xs={12}>
           <SectionHeading
-            heading={"Our best offers"}
-            subHeading={"Luxury at its bext"}
+            heading={heading.heading}
+            subHeading={heading.subheading}
           />
         </Grid>
         <Grid item xs={12} sx={{ width: "100%" }}>
-          <SwiperCarousel />
+          <SwiperCarousel content={inseratImageArray} />
         </Grid>
       </Grid>
     </SectionWrapper>

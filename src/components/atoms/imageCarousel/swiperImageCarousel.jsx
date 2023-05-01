@@ -23,28 +23,29 @@ import Property4 from "public/property4.jpg";
 
 const defaultContent = [
   {
-    title: "Bla",
+    caption: "Lorem Ipsum 1",
     imgPath: Property1.src,
   },
   {
-    title: "Hannah Cosinus",
+    caption: "Lorem Ipsum 1",
     imgPath: Property2.src,
   },
   {
-    title: "Shell",
+    caption: "Lorem Ipsum 1",
     imgPath: Property3.src,
   },
   {
-    title: "Herr  OMG",
+    caption: "Lorem Ipsum 1",
     imgPath: Property4.src,
   },
 ];
 
-export default function Carousel() {
+export default function Carousel({ content }) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
   const matches = useMediaQuery(theme.breakpoints.up("md"));
-  const maxSteps = matches ? defaultContent.length - 1 : defaultContent.length;
+  const contentArray = content != null ? content : defaultContent;
+  const maxSteps = matches ? contentArray.length - 1 : contentArray.length;
 
   const CustomeMobileStepper = styled(MobileStepper)(({ theme }) => ({
     "& .MuiMobileStepper-dotActive": {
@@ -110,13 +111,13 @@ export default function Carousel() {
     <>
       <Swiper
         slidesPerView={matches ? 2 : 1}
-        onSlideChange={(e) => setActiveStep(e.activeIndex)}
+        //onSlideChange={(e) => setActiveStep(e.activeIndex)}
         className="mySwiper"
       >
-        {defaultContent.map((step, index) => {
+        {contentArray.map((step, index) => {
           return (
-            <div key={"Image_" + step.title}>
-              <SwiperSlide>
+            <div key={"Image_" + step.caption + index}>
+              <SwiperSlide key={"Image_" + step.caption + index}>
                 <ImageComponent {...step} />
               </SwiperSlide>
             </div>

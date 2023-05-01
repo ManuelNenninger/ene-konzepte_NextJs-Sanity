@@ -9,7 +9,7 @@ import { styled } from "@mui/material/styles";
 import Button, { ButtonProps } from "@mui/material/Button";
 import Link from "next/link";
 import { useTheme } from "@mui/material/styles";
-
+import { urlFor } from "lib/sanity";
 import ArrowButton from "src/components/atoms/buttons/arrowButton";
 
 import Property1 from "public/property1.png";
@@ -52,7 +52,7 @@ export default function PropertyCard({
   return (
     <Card
       sx={{
-        maxWidth: "100%",
+        width: "100%",
         backgroundColor: theme.palette.tertiary.main,
         borderRadius: 0,
         boxShadow: "none",
@@ -62,7 +62,11 @@ export default function PropertyCard({
       <CardMedia
         component="img"
         sx={{ height: { xs: 300, md: 500 } }}
-        image={propertyImage ? propertyImage : Property1.src}
+        image={
+          propertyImage?.asset != null
+            ? urlFor(propertyImage).url()
+            : Property1.src
+        }
         title={"Bild für" + propertyName}
       />
       <CardContent sx={{ pt: 5 }}>
@@ -74,7 +78,7 @@ export default function PropertyCard({
         </Typography>
       </CardContent>
       <CardActions>
-        <ArrowButton buttonURL={propertyURL} />
+        <ArrowButton buttonURL={"/immobilien/" + propertyURL} />
       </CardActions>
     </Card>
   );

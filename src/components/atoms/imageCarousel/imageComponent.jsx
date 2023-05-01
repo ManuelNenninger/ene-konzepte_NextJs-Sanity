@@ -7,6 +7,7 @@ import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import { urlFor } from "lib/sanity";
 
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -53,7 +54,7 @@ function BootstrapDialogTitle(props) {
   );
 }
 
-export default function ActionAreaCard({ imgPath, title }) {
+export default function ActionAreaCard({ imgPath, caption, asset }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const matches = useMediaQuery(theme.breakpoints.up("md"));
@@ -85,8 +86,8 @@ export default function ActionAreaCard({ imgPath, title }) {
             <CardMedia
               component="img"
               height={matches ? 500 : 400}
-              image={imgPath}
-              alt={title}
+              image={asset != null ? urlFor(asset).url() : imgPath}
+              alt={caption}
             />
           </CardActionArea>
         </Card>
@@ -105,8 +106,8 @@ export default function ActionAreaCard({ imgPath, title }) {
           id="customized-dialog-title"
           onClose={handleClose}
         >
-          <Typography variant="h4" sx={{ fontWeight: 300 }}>
-            {title}
+          <Typography variant="h4" component="span" sx={{ fontWeight: 300 }}>
+            {caption}
           </Typography>
         </BootstrapDialogTitle>
         <DialogContent dividers>
@@ -115,8 +116,8 @@ export default function ActionAreaCard({ imgPath, title }) {
               <CardMedia
                 component="img"
                 height={matches ? 700 : "100%"}
-                image={imgPath}
-                alt={title}
+                image={asset != null ? urlFor(asset).url() : imgPath}
+                alt={caption}
               />
             </CardActionArea>
           </Card>

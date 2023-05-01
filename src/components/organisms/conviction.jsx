@@ -3,17 +3,23 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useAppContext } from "src/appContext";
+import { urlFor } from "lib/sanity";
 
 import SectionWrapper from "src/components/atoms/wrapperElements/sectionWrapper";
 import ActionButton from "src/components/atoms/buttons/actionButton";
 
 import PropertyDefault from "public/DefaultConviction.jpg";
 
-export default function Conviction() {
+export default function Conviction({ content }) {
   const { setStates } = useAppContext();
   const handleClickOpen = () => {
     setStates.dialogComponente(true);
   };
+  const {
+    heading = { heading: "Our best offers", subheading: "Luxury at its best" },
+    mainImage = null,
+    callToAction = { buttonText: "Contect us", specialAction: true, url: null },
+  } = content != null ? content : {};
 
   const ContentGrid = () => {
     return (
@@ -32,7 +38,7 @@ export default function Conviction() {
               gutterBottom
               sx={{}}
             >
-              You are in Good Hands
+              {heading.subheading}
             </Typography>
           </Grid>
           <Grid item xs={12}>
@@ -41,7 +47,7 @@ export default function Conviction() {
               gutterBottom
               sx={{ fontWeight: 400 }}
             >
-              Lorem Ipsum lacinia luctus.
+              {heading.heading}{" "}
             </Typography>
           </Grid>
           <Grid item xs={12}>
@@ -53,8 +59,9 @@ export default function Conviction() {
             >
               <ActionButton
                 variant="contained"
-                text="Contect Us"
-                onClick={handleClickOpen}
+                text={callToAction.buttonText}
+                onClick={callToAction?.specialAction ? handleClickOpen : null}
+                href={callToAction?.specialAction ? null : callToAction?.url}
               />
             </Grid>
           </Grid>
@@ -75,8 +82,10 @@ export default function Conviction() {
         >
           <Box
             component="img"
-            src={PropertyDefault.src}
-            alt="Flowers in Chania" //<<<<<<------- Anpassen
+            src={
+              mainImage != null ? urlFor(mainImage).url() : PropertyDefault.src
+            }
+            alt={heading != null ? heading?.heading : "Contact Us"}
             sx={{ height: "100%", width: "100%", objectFit: "cover" }}
           />
         </Box>

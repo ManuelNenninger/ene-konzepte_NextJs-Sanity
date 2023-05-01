@@ -1,6 +1,6 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
-import { useGetAllPosts } from "src/components/atoms/fetcher/fetch";
+import { useGetAllInserate } from "src/components/atoms/fetcher/fetch";
 
 import PropertyCard from "src/components/atoms/portfolio/propertyCard";
 import ActionButton from "src/components/atoms/buttons/actionButton";
@@ -17,29 +17,30 @@ const propertyArray = [
     propertyImage: Property4.src,
     propertyName: "Lorem Haus am Rande Münchens",
     propertyDescribtion: "Detail Heading Lorem Ipsum",
-    link: "/immobilien/test",
+    slug: "test",
   },
   {
     propertyImage: Property2.src,
     propertyName: "Lorem Ipsum Home",
     propertyDescribtion: "Detail Heading Lorem Ipsum",
-    link: "/immobilien/test",
+    slug: "test",
   },
   {
     propertyImage: Property3.src,
     propertyName: "Eiusmod tempor Haus",
     propertyDescribtion: "Detail Heading Lorem Ipsum",
-    link: "/immobilien/test",
+    slug: "test",
   },
 ];
 
 export default function BigPortfolio({ content }) {
   const { portfolio = propertyArray, showPortfolioButton = true } =
     content != null ? content : {};
-  //   const { data, isValidating, size, setSize, hitEnd } = useGetAllPosts({
-  //     initialData: [portfolio],
-  //     preview: false,
-  //   });
+
+  const { data, isValidating, size, setSize, hitEnd } = useGetAllInserate({
+    initialData: [portfolio],
+    preview: false,
+  });
 
   {
     /* 
@@ -69,25 +70,33 @@ export default function BigPortfolio({ content }) {
             spacing={{ xs: 5, md: 10 }}
             columns={{ xs: 12, md: 12 }}
           >
-            {propertyArray.map(
-              (
-                { propertyImage, propertyName, propertyDescribtion, link },
-                index
-              ) => {
-                //const propertyURL = new URL(link); //fuer TS URL
+            {data &&
+              data.map((parentArray) =>
+                parentArray.map(
+                  (
+                    { propertyImage, propertyName, propertyDescribtion, slug },
+                    index
+                  ) => {
+                    //const propertyURL = new URL(link); //fuer TS URL
 
-                return (
-                  <Grid item xs={12} md={6} key={"Property_Card_" + index}>
-                    <PropertyCard
-                      propertyImage={propertyImage}
-                      propertyName={propertyName}
-                      propertyDescribtion={propertyDescribtion}
-                      propertyURL={link}
-                    />
-                  </Grid>
-                );
-              }
-            )}
+                    return (
+                      <Grid
+                        item
+                        xs={12}
+                        md={6}
+                        key={"Property_Card_" + index + propertyName}
+                      >
+                        <PropertyCard
+                          propertyImage={propertyImage}
+                          propertyName={propertyName}
+                          propertyDescribtion={propertyDescribtion}
+                          propertyURL={slug}
+                        />
+                      </Grid>
+                    );
+                  }
+                )
+              )}
             <Grid item xs={12} sx={{ width: "100%" }}>
               <Grid
                 container
@@ -96,8 +105,8 @@ export default function BigPortfolio({ content }) {
                 alignItems="flex-start"
               >
                 <ActionButton
-                  //disabled={hitEnd}
-                  disabled={true}
+                  disabled={hitEnd}
+                  //disabled={true}
                   variant="contained"
                   text={"Load More"}
                   onClick={() => setSize(size + 1)}

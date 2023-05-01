@@ -1,11 +1,12 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-
+import { PortableText } from "@portabletext/react";
+import { ptComponents } from "lib/sanity";
 import SectionWrapper from "src/components/atoms/wrapperElements/sectionWrapper";
 
 export default function DetailedDescribtion({ content }) {
-  const { aboutTitle = "Details", body = [] } = content == null ? {} : content;
+  const { title = "Details", body = null } = content == null ? {} : content;
 
   const DefaultBlockContent = () => {
     return (
@@ -42,11 +43,15 @@ export default function DetailedDescribtion({ content }) {
       >
         <Grid item xs={12}>
           <Typography variant="h4" gutterBottom>
-            {aboutTitle}
+            {title}
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <DefaultBlockContent />
+          {body != null ? (
+            <PortableText value={body} components={ptComponents} />
+          ) : (
+            <DefaultBlockContent />
+          )}
         </Grid>
       </Grid>
     </SectionWrapper>

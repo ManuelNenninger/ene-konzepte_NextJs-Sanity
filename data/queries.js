@@ -28,6 +28,9 @@ export const employeeComponent = `
   },
 `;
 
+export const portfolio =
+  '{"propertyName": heroSection.title,"propertyDescribtion":heroSection.describtion, "propertyImage": heroSection.mainImage ,"slug": slug.current}';
+
 // Construct our content "modules" GROQ
 export const modules = `
   _type == 'grid' => {
@@ -98,7 +101,33 @@ export const modules = `
       _type,
       _key,
       showPortfolioButton,
-      "portfolio": *[_type == "post" && publishedAt < now()][0...2],
+      "portfolio": *[_type == "inserat" && publishedAt < now()][0...2]${portfolio},
+    }
+  },
+  _type == 'convictionSection' => {
+    "conviction": {
+      _type,
+      _key,
+      heading,
+      callToAction,
+      mainImage,
+    }
+  },
+  _type == 'imageCarouselSection' => {
+    "imageCarousel": {
+      _type,
+      _key,
+      heading,
+      inseratImageArray[],
+      test,
+    }
+  },
+  _type == 'blockSection' => {
+    "detailedDescribtion": {
+      _type,
+      _key,
+      title,
+      body, 
     }
   },
 `;

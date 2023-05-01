@@ -8,8 +8,8 @@ export default function heroPicture({ mainImage, title }) {
     <>
       <Box className="unset-img" sx={{ display: "flex" }}>
         <Box
-          component={Image}
-          src={mainImage != null ? urlFor(mainImage).url() : HeroPicture}
+          component="img"
+          src={mainImage != null ? urlFor(mainImage).url() : HeroPicture.src}
           alt={title}
           className="custom-img"
         />

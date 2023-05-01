@@ -11,7 +11,7 @@ export default defineType({
       type: 'string',
       validation: (Rule) => (
         Rule.required(),
-        Rule.max(40).warning('Lange Texte auf den Überschriften sehen nicht gut aus.')
+        Rule.max(60).warning('Lange Texte auf den Überschriften sehen nicht gut aus.')
       ),
     }),
     defineField({

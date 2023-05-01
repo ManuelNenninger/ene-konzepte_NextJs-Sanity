@@ -5,11 +5,28 @@ import SeoHead from "src/components/seo/seohead";
 import NotFoundPage from "pages/404";
 import Fullpageloader from "src/components/atoms/actions/fullpageloader";
 import { useRouter } from "next/router";
-import { getFooterData, getPostData } from "lib/api";
+import { getFooterData, getPostData, getInseratData } from "lib/api";
 import PreviewAlert from "src/components/atoms/actions/previewalert";
 
-const Post = ({ post, pages, footer, preview = false }) => {
-  const { seo = null, slug = null } = pages != null ? pages : {};
+const Inserat = ({ inserat, footer, preview = false }) => {
+  const {
+    title = "Außergewöhnliches Design. Herausragender Service",
+    describtion = "Munich based Real Estate",
+    mainImage = null,
+  } = inserat?.heroSection != null ? inserat?.heroSection : {};
+
+  const seo = {
+    metaTitle: title,
+    metaDesc: describtion,
+    shareTitle: describtion,
+    shareGraphic: mainImage,
+  };
+
+  const DefauldContentHero = {
+    title: "Lorem Haus am Rande Münchens",
+    describtion: "München, Neuhausen Musterstrasse 2",
+    mainImage: null,
+  };
 
   const router = useRouter();
 
@@ -19,7 +36,7 @@ const Post = ({ post, pages, footer, preview = false }) => {
   //   preview: preview,
   // });
 
-  if (!router.isFallback && !post?.slug) {
+  if (!router.isFallback && !inserat?.slug) {
     return <NotFoundPage statusCode={404} />;
   }
 
@@ -27,38 +44,32 @@ const Post = ({ post, pages, footer, preview = false }) => {
     return <Fullpageloader />;
   }
 
-  const DefauldContentHero = {
-    title: "Lorem Haus am Rande Münchens",
-    describtion: "München, Neuhausen Musterstrasse 2",
-    mainImage: null,
-  };
-
-  if (!router.isFallback && post?.slug) {
+  if (!router.isFallback && inserat?.slug) {
     return (
       <>
-        {seo != null && <SeoHead seo={seo} slug={slug} />}
+        {seo != null && <SeoHead seo={seo} slug={inserat?.slug} />}
         <Layout footer={footer != null ? footer : undefined}>
           {preview && <PreviewAlert />}
           <Module
             moduleName={"hero"}
-            content={{ darkBackgroundColor: false, ...DefauldContentHero }}
+            content={
+              inserat?.heroSection != null
+                ? { ...inserat?.heroSection, darkBackgroundColor: false }
+                : { ...DefauldContentHero, darkBackgroundColor: false }
+            }
           />
           <Module
             moduleName={"specification"}
-            //content={content}
+            content={inserat?.specification}
           />
-          <Module
-            moduleName={"imageCarousel"}
-            //content={content}
-          />
-          <Module
-            moduleName={"detailedDescribtion"}
-            //content={content}
-          />
-          <Module
-            moduleName={"conviction"}
-            //content={content}
-          />
+          {inserat.pageBuilder?.map(function (obj, index) {
+            //console.log({ ...Object.values(obj)[0] });
+            //console.log("Module Name ist: ", Object.keys(obj)[0]);
+            const content = { ...Object.values(obj)[0] };
+            return (
+              <Module moduleName={Object.keys(obj)[0]} content={content} />
+            );
+          })}
         </Layout>
       </>
     );
@@ -67,7 +78,7 @@ const Post = ({ post, pages, footer, preview = false }) => {
 
 export async function getStaticPaths() {
   const paths = await client.fetch(
-    `*[_type == "post" && defined(slug.current)][].slug.current`
+    `*[_type == "inserat" && defined(slug.current)][].slug.current`
   );
 
   return {
@@ -79,12 +90,12 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { slug = "" } = context.params;
   const { preview = false, previewData } = context;
-  const post = await getPostData(slug, preview);
   const footer = await getFooterData();
+  const inserat = await getInseratData(slug, preview);
 
   return {
     props: {
-      post,
+      inserat,
       footer,
       preview,
     },
@@ -94,4 +105,4 @@ export async function getStaticProps(context) {
   };
 }
 
-export default Post;
+export default Inserat;
