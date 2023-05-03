@@ -1,13 +1,20 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
+import ActionButton from "src/components/atoms/buttons/actionButton";
+import { useAppContext } from "src/appContext";
 
 export default function HeroDescribtion({
   darkBackgroundColor,
   title,
   describtion,
+  callToAction,
 }) {
   const theme = useTheme();
+  const { setStates } = useAppContext();
+  const handleClickOpen = () => {
+    setStates.dialogComponente(true);
+  };
 
   const Heading = (props) => {
     return (
@@ -26,6 +33,7 @@ export default function HeroDescribtion({
           component="h1"
           gutterBottom
           color={darkBackgroundColor && "text.tertiary"}
+          align="center"
           sx={{ display: { xs: "block", md: "none" } }}
         >
           {props.children}
@@ -52,6 +60,7 @@ export default function HeroDescribtion({
           component="h2"
           gutterBottom
           color={darkBackgroundColor ? "text.quaternary" : "text.secondary"}
+          align="center"
           sx={{
             display: { xs: "block", md: "none" },
           }}
@@ -79,6 +88,21 @@ export default function HeroDescribtion({
         <Grid item xs={12}>
           <Heading>{title}</Heading>
         </Grid>{" "}
+        <Grid item xs={12} sx={{ width: { xs: "100%", md: "fit-content" } }}>
+          <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems={{ xs: "center", md: "flex-start" }}
+          >
+            <ActionButton
+              variant="contained"
+              text={callToAction.buttonText}
+              onClick={callToAction?.specialAction ? handleClickOpen : null}
+              href={callToAction?.specialAction ? null : callToAction?.url}
+            />
+          </Grid>
+        </Grid>
       </Grid>
     </>
   );

@@ -7,25 +7,22 @@ import Fullpageloader from "src/components/atoms/actions/fullpageloader";
 import { useRouter } from "next/router";
 import { getFooterData, getPostData, getInseratData } from "lib/api";
 import PreviewAlert from "src/components/atoms/actions/previewalert";
+import { urlFor } from "lib/sanity";
 
 const Inserat = ({ inserat, footer, preview = false }) => {
   const {
-    title = "Außergewöhnliches Design. Herausragender Service",
-    describtion = "Munich based Real Estate",
+    title = "Default SEO Title",
+    describtion = "Default SEO Describtion",
     mainImage = null,
-  } = inserat?.heroSection != null ? inserat?.heroSection : {};
+  } = inserat?.basicTourInformation != null
+    ? inserat?.basicTourInformation
+    : {};
 
   const seo = {
     metaTitle: title,
     metaDesc: describtion,
     shareTitle: describtion,
     shareGraphic: mainImage,
-  };
-
-  const DefauldContentHero = {
-    title: "Lorem Haus am Rande Münchens",
-    describtion: "München, Neuhausen Musterstrasse 2",
-    mainImage: null,
   };
 
   const router = useRouter();
@@ -50,19 +47,14 @@ const Inserat = ({ inserat, footer, preview = false }) => {
         {seo != null && <SeoHead seo={seo} slug={inserat?.slug} />}
         <Layout footer={footer != null ? footer : undefined}>
           {preview && <PreviewAlert />}
-          <Module
-            moduleName={"hero"}
-            content={
-              inserat?.heroSection != null
-                ? { ...inserat?.heroSection, darkBackgroundColor: false }
-                : { ...DefauldContentHero, darkBackgroundColor: false }
-            }
-          />
-          <Module
-            moduleName={"specification"}
-            content={inserat?.specification}
-          />
-          {inserat.pageBuilder?.map(function (obj, index) {
+          {inserat?.basicTourInformation && (
+            <Module
+              moduleName={"infoBande"}
+              content={inserat?.basicTourInformation}
+            />
+          )}
+
+          {inserat?.pageBuilder?.map(function (obj, index) {
             //console.log({ ...Object.values(obj)[0] });
             //console.log("Module Name ist: ", Object.keys(obj)[0]);
             const content = { ...Object.values(obj)[0] };
@@ -78,7 +70,7 @@ const Inserat = ({ inserat, footer, preview = false }) => {
 
 export async function getStaticPaths() {
   const paths = await client.fetch(
-    `*[_type == "inserat" && defined(slug.current)][].slug.current`
+    `*[_type == "touren" && defined(slug.current)][].slug.current`
   );
 
   return {

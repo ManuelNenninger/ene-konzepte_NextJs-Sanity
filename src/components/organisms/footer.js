@@ -12,9 +12,9 @@ import Divider from "@mui/material/Divider";
 import Link from "next/link";
 import SectionWrapper from "../atoms/wrapperElements/sectionWrapper";
 
-export default function Footer({ content = {} }) {
+export default function Footer({ content }) {
   let {
-    brandname = "",
+    brandName = "",
     brandSlogan = "Your agency with values ",
     footerrowbuilder = [
       {
@@ -37,7 +37,7 @@ export default function Footer({ content = {} }) {
       instagram: "https://www.instagram.com",
       twitter: "https://twitter.com/",
     },
-  } = content;
+  } = content != null ? content : {};
 
   const columnsNumber =
     footersocial !== null
@@ -122,8 +122,8 @@ export default function Footer({ content = {} }) {
               <Grid
                 key={"Footerrot_" + obj.metaTitle + index}
                 item
-                xs={12}
-                md={parseInt(12 / columnsNumber)}
+                xs={columnsNumber !== 1 && 12}
+                md={columnsNumber !== 1 && parseInt(12 / columnsNumber)}
               >
                 <Grid
                   container
@@ -137,7 +137,7 @@ export default function Footer({ content = {} }) {
                       {obj.metaTitle}
                     </Typography>
                   </Grid>
-                  {obj.linkbuilder.map(function (linkObj, linkIndex) {
+                  {obj.linkbuilder.map((linkObj, linkIndex) => {
                     return (
                       <>
                         <Grid item key={linkObj.linkname + linkIndex}>
@@ -205,7 +205,7 @@ export default function Footer({ content = {} }) {
               color="text.tertiary"
               sx={{ display: { xs: "block", md: "none" } }}
             >
-              {Object.keys(content).length !== 0 ? brandname : "Brandnamé"}
+              {Object.keys(content).length !== 0 ? brandName : "Brandnamé"}
             </Typography>
             <Typography
               variant="h3"
@@ -213,7 +213,7 @@ export default function Footer({ content = {} }) {
               color="text.tertiary"
               sx={{ display: { xs: "none", md: "block" } }}
             >
-              {Object.keys(content).length !== 0 ? brandname : "Brandnamé"}
+              {Object.keys(content).length !== 0 ? brandName : "Brandnamé"}
             </Typography>
           </Grid>
           <Grid item xs={12}>
@@ -233,7 +233,7 @@ export default function Footer({ content = {} }) {
   };
 
   return (
-    <SectionWrapper footer topDistance bottomDistance secondaryBackgroundColor>
+    <SectionWrapper bottomDistance secondaryBackgroundColor>
       <Grid
         container
         direction="row"

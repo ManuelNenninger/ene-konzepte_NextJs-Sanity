@@ -34,14 +34,14 @@ const propertyArray = [
 ];
 
 export default function BigPortfolio({ content }) {
-  const { portfolio = propertyArray, showPortfolioButton = true } =
+  const { portfolio, showPortfolioButton = true } =
     content != null ? content : {};
 
   const { data, isValidating, size, setSize, hitEnd } = useGetAllInserate({
     initialData: [portfolio],
     preview: false,
   });
-
+  console.log(data);
   {
     /* 
    * Um die pagination Data zu laden, verwende folgende syntax:
@@ -67,29 +67,27 @@ export default function BigPortfolio({ content }) {
         <Grid item xs={12}>
           <Grid
             container
-            spacing={{ xs: 5, md: 10 }}
-            columns={{ xs: 12, md: 12 }}
+            spacing={{ xs: 5, md: 5 }}
+            //columns={{ xs: 12, md: 12 }}
           >
             {data &&
-              data.map((parentArray) =>
+              data.map((parentArray, i) =>
                 parentArray.map(
-                  (
-                    { propertyImage, propertyName, propertyDescribtion, slug },
-                    index
-                  ) => {
+                  ({ title, describtion, mainImage, slug }, index) => {
                     //const propertyURL = new URL(link); //fuer TS URL
 
                     return (
                       <Grid
                         item
                         xs={12}
-                        md={6}
-                        key={"Property_Card_" + index + propertyName}
+                        sm={6}
+                        md={3}
+                        key={"Tour_" + index + i + title}
                       >
                         <PropertyCard
-                          propertyImage={propertyImage}
-                          propertyName={propertyName}
-                          propertyDescribtion={propertyDescribtion}
+                          propertyImage={mainImage}
+                          propertyName={title}
+                          propertyDescribtion={describtion}
                           propertyURL={slug}
                         />
                       </Grid>

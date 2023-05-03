@@ -34,6 +34,18 @@ export default defineType({
       },
       hidden: ({parent}) => parent?.specialAction,
     }),
+    defineField({
+      title: 'Pop-Up Text',
+      name: 'popUpDialog',
+      type: 'reference',
+      to: {type: 'callToActionPopUp'},
+      validation: (Rule) => {
+        if (parent?.specialAction) {
+          return Rule.required()
+        }
+      },
+      hidden: ({parent}) => !parent?.specialAction,
+    }),
   ],
   preview: {
     select: {

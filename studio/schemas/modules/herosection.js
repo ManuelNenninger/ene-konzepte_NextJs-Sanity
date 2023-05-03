@@ -26,6 +26,19 @@ export default defineType({
         hotspot: true,
       },
     }),
+    defineField({
+      name: 'ctaButton',
+      type: 'boolean',
+      title: 'Call to action - Button',
+      initialValue: false,
+      description: 'Füge einen Button hinzu, über den Du auf eine von Dir bestimmte Seite kommst.',
+    }),
+    defineField({
+      name: 'callToAction',
+      type: 'callToAction',
+      title: 'Call to Action',
+      hidden: ({parent}) => !parent?.ctaButton,
+    }),
   ],
   preview: {
     select: {

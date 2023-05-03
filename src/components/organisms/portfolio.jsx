@@ -13,26 +13,40 @@ import Property4 from "public/property4.jpg";
 //Default Propertys
 const propertyArray = [
   {
-    propertyImage: Property4.src,
-    propertyName: "Lorem Haus am Rande Münchens",
-    propertyDescribtion: "Detail Heading Lorem Ipsum",
-    link: "/immobilien/test",
+    mainImage: Property3.src,
+    title: "Eiusmod tempor Haus",
+    describtion: "Detail Heading Lorem Ipsum",
+    link: "/touren/test",
   },
   {
-    propertyImage: Property2.src,
-    propertyName: "Lorem Ipsum Home",
-    propertyDescribtion: "Detail Heading Lorem Ipsum",
-    link: "/immobilien/test",
+    mainImage: Property3.src,
+    title: "Eiusmod tempor Haus",
+    describtion: "Detail Heading Lorem Ipsum",
+    link: "/touren/test",
   },
   {
-    propertyImage: Property3.src,
-    propertyName: "Eiusmod tempor Haus",
-    propertyDescribtion: "Detail Heading Lorem Ipsum",
-    link: "/immobilien/test",
+    mainImage: Property3.src,
+    title: "Eiusmod tempor Haus",
+    describtion: "Detail Heading Lorem Ipsum",
+    link: "/touren/test",
+  },
+  {
+    mainImage: Property3.src,
+    title: "Eiusmod tempor Haus",
+    describtion: "Detail Heading Lorem Ipsum",
+    link: "/touren/test",
   },
 ];
 
-export default function Portfolio() {
+export default function Portfolio({ content }) {
+  const {
+    heading: {
+      heading: title = "Default Heading",
+      subheading: describtion = "Default Describtion",
+    } = {},
+    touren = propertyArray,
+  } = content != null ? content : {};
+
   return (
     <SectionWrapper fullDistanceTop bottomDistance>
       <Grid
@@ -43,36 +57,28 @@ export default function Portfolio() {
         spacing={{ xs: 5, md: 10 }}
       >
         <Grid item xs={12}>
-          <SectionHeading
-            heading={"Our best offers"}
-            subHeading={"Luxury at its bext"}
-          />
+          <SectionHeading heading={title} subHeading={describtion} />
         </Grid>
         <Grid item xs={12}>
           <Grid
             container
-            spacing={{ xs: 5, md: 10 }}
-            columns={{ xs: 12, md: 12 }}
+            spacing={{ xs: 5, md: 5 }}
+            //columns={{ xs: 12, md: 12 }}
           >
-            {propertyArray.map(
-              (
-                { propertyImage, propertyName, propertyDescribtion, link },
-                index
-              ) => {
-                //const propertyURL = new URL(link); //fuer TS URL
+            {touren.map(({ title, describtion, mainImage, slug }, index) => {
+              //const propertyURL = new URL(link); //fuer TS URL
 
-                return (
-                  <Grid item xs={12} md={6} key={propertyName + index}>
-                    <PropertyCard
-                      propertyImage={propertyImage}
-                      propertyName={propertyName}
-                      propertyDescribtion={propertyDescribtion}
-                      propertyURL={link}
-                    />
-                  </Grid>
-                );
-              }
-            )}
+              return (
+                <Grid item xs={12} sm={6} md={3} key={title + index}>
+                  <PropertyCard
+                    propertyImage={mainImage}
+                    propertyName={title}
+                    propertyDescribtion={describtion}
+                    propertyURL={slug}
+                  />
+                </Grid>
+              );
+            })}
             <Grid item xs={12} sx={{ width: "100%" }}>
               <Grid
                 container
@@ -83,7 +89,7 @@ export default function Portfolio() {
                 <ActionButton
                   variant="contained"
                   text={"Mehr"}
-                  href={"/immobilien"}
+                  href={"/touren"}
                 />
               </Grid>
             </Grid>

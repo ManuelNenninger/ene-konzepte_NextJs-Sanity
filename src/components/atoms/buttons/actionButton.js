@@ -34,9 +34,8 @@ export default function ContainedActionButton(props) {
     outlined: props.secondaryColor
       ? theme.palette.secondary.main
       : theme.palette.error.main,
-    contained: "#FFFF",
+    contained: theme.palette.error.main,
   };
-
   //const backgroundColor = props.variant == "outlined" ? "none" : theme.palette.secondary.main;
 
   const BootstrapButton = styled(Button)({

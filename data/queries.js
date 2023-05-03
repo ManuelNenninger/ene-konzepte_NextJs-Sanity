@@ -17,6 +17,13 @@ export const corporateValue = `
     describtion,
   },
 `;
+export const mainTourValues = `
+  _type == 'touren' => {
+    _type,
+    _key,
+    title,
+  },
+`;
 
 export const employeeComponent = `
   _type == 'employeeComponent' => {
@@ -29,7 +36,7 @@ export const employeeComponent = `
 `;
 
 export const portfolio =
-  '{"propertyName": heroSection.title,"propertyDescribtion":heroSection.describtion, "propertyImage": heroSection.mainImage ,"slug": slug.current}';
+  '{"title": basicTourInformation.title, "describtion": basicTourInformation.describtion, mainImage, "slug": slug.current}';
 
 // Construct our content "modules" GROQ
 export const modules = `
@@ -74,6 +81,38 @@ export const modules = `
       button->,
     }
   },
+  _type == 'specificationbanner' => {
+    "specification": {
+      _type,
+      _key,
+      corporateValueArray[]{
+        _type == 'tourInformation' => {
+          _type,
+          _key,
+          title,
+          describtion,
+        },
+      }
+    }
+  },
+  _type == 'portfolioSection' => {
+    "portfolio": {
+      _type,
+      _key,
+      heading,
+      "touren": mainTours[]->{"title": basicTourInformation.title, "describtion": basicTourInformation.describtion, mainImage, "slug": slug.current},
+      mainImage,
+    }
+  },
+  _type == 'aboutSection' => {
+    "about": {
+      _type,
+      _key,
+      title,
+      describtion,
+      mainImage,
+    }
+  },
   _type == 'corporateValueSection' => {
     "corporatevalues": {
       _type,
@@ -101,7 +140,7 @@ export const modules = `
       _type,
       _key,
       showPortfolioButton,
-      "portfolio": *[_type == "inserat" && publishedAt < now()][0...2]${portfolio},
+      "portfolio": *[_type == "touren" && publishedAt < now()][0...4]${portfolio},
     }
   },
   _type == 'convictionSection' => {
@@ -133,7 +172,8 @@ export const modules = `
 `;
 
 export const footermodule = `
-brandname,
+brandName,
+"dialogPopUp": *[_type == "callToActionPopUp"][0]{title,describtion},
 footersocial,
 footerrowbuilder[]{
   _type == 'footerrow' => {

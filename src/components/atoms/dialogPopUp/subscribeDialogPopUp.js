@@ -12,9 +12,9 @@ import EmailSubscribtion from "src/components/atoms/dialogPopUp/eMailSubscribtio
 import Grid from "@mui/material/Grid";
 import ContactForm from "src/components/atoms/dialogPopUp/contactform";
 
-export default function DialogOrder({ open, handleClose, order }) {
+export default function DialogOrder({ open, handleClose, order, content }) {
   const theme = useTheme();
-
+  const { title = "Say Hello", describtion } = content != null ? content : {};
   return (
     <>
       <Dialog
@@ -25,24 +25,20 @@ export default function DialogOrder({ open, handleClose, order }) {
         aria-describedby="alert-dialog-slide-description"
       >
         <Box sx={{ backgroundColor: theme.palette.primary.main, p: 4 }}>
-          <DialogTitle color="text.primary">{"Say Hello"}</DialogTitle>
+          <DialogTitle color="text.primary">{title}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              <Typography variant="body1" color="text.primary">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed diam voluptua.
-              </Typography>
-              <Typography variant="body1" color="text.primary">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat,
-              </Typography>
-              <Typography variant="body1" color="text.primary">
-                At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-                dolor sit amet.
-              </Typography>
+              {describtion != null ? (
+                <Typography variant="body1" color="text.primary">
+                  {describtion}
+                </Typography>
+              ) : (
+                <Typography variant="body1" color="text.primary">
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                  aliquyam erat, sed diam voluptua.
+                </Typography>
+              )}
             </DialogContentText>
           </DialogContent>
           <DialogActions>

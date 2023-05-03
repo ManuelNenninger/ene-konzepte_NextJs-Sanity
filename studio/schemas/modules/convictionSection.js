@@ -2,8 +2,8 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'convictionSection',
-  title: 'Conviction Section',
-  type: 'object',
+  title: 'Überzeugung - Section',
+  type: 'document',
   fields: [
     defineField({
       name: 'heading',
@@ -15,14 +15,6 @@ export default defineType({
       name: 'callToAction',
       type: 'callToAction',
       title: 'Call to Action',
-    }),
-    defineField({
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
     }),
   ],
   preview: {

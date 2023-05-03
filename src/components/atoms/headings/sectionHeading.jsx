@@ -69,10 +69,10 @@ export default function SectionHeading({ heading, subHeading }) {
         sx={{ px: { md: 20 } }}
       >
         <Grid item xs={12}>
-          <Subheading>{subHeading}</Subheading>
+          <Heading>{heading}</Heading>
         </Grid>
         <Grid item xs={12}>
-          <Heading>{heading}</Heading>
+          <Subheading>{subHeading}</Subheading>
         </Grid>
       </Grid>
     </>

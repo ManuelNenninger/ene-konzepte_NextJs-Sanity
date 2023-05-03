@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import HeroPicture from "public/detailExample.jpg";
+import HeroPicture from "public/unsplash_hintergrund_hero.jpg";
 import Image from "next/image";
 import { urlFor } from "lib/sanity";
 
@@ -8,10 +8,14 @@ export default function heroPicture({ mainImage, title }) {
     <>
       <Box className="unset-img" sx={{ display: "flex" }}>
         <Box
-          component="img"
+          component={Image}
+          priority
           src={mainImage != null ? urlFor(mainImage).url() : HeroPicture.src}
           alt={title}
-          className="custom-img"
+          fill
+          sx={{
+            objectFit: "cover",
+          }}
         />
       </Box>
     </>

@@ -1,6 +1,6 @@
 import React from "react";
 
-import HeroSection from "src/components/organisms/hero";
+import HeroSection from "src/components/organisms/hero_two";
 import PortfolioSection from "src/components/organisms/portfolio";
 import InfoBande from "src/components/organisms/infobande";
 import AgreementSection from "src/components/organisms/agreement";
@@ -10,11 +10,17 @@ import SpecificationsBanner from "src/components/organisms/specificationbanner";
 import ImageCarousel from "src/components/organisms/imagecarousel";
 import DetailedDescribtion from "src/components/organisms/detailedDescribtion";
 import EmployeesSection from "src/components/organisms/employees";
-import CorporateValuesSection from "src/components/organisms/corporatevalues";
+import AboutSection from "src/components/organisms/about";
 import BigPortfolioSection from "src/components/organisms/bigPortfolio";
 
 const Fallback = (props) => {
-  return <h1>Ups. No Data found.</h1>;
+  return (
+    <div>
+      <h1>
+        Ups. No Data found. Es sieht so aus, als wäre kein Module hinterlegt...
+      </h1>
+    </div>
+  );
 };
 
 export const Module = ({ content, moduleName }) => {
@@ -30,7 +36,7 @@ export const Module = ({ content, moduleName }) => {
       imageCarousel: ImageCarousel,
       detailedDescribtion: DetailedDescribtion,
       employees: EmployeesSection,
-      corporatevalues: CorporateValuesSection,
+      about: AboutSection,
       bigPortfolio: BigPortfolioSection,
       // process: ProcessTimeline,
       // about: AboutSection,

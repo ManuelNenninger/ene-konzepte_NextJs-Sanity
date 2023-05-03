@@ -32,6 +32,11 @@ export default defineType({
         {type: 'corporateValueSection'},
         {type: 'employeesSection'},
         {type: 'bigPortfolioSection'},
+        {type: 'aboutSection'},
+        {type: 'convictionSection'},
+        {type: 'portfolioSection'},
+        {type: 'blockSection'},
+
         // {
         //   title: 'Reusable Section',
         //   type: 'reference',

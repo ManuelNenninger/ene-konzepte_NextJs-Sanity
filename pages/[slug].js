@@ -13,11 +13,11 @@ export default function Site({ pages, footer, preview = false }) {
   const { seo = null, slug = null } = pages != null ? pages : {};
   const router = useRouter();
 
-  // const { data: revalidatedPages, error } = useGetPages({
-  //   initialData: pages,
-  //   slug: pages?.slug,
-  //   preview: preview,
-  // });
+  const { data: revalidatedPages, error } = useGetPages({
+    initialData: pages,
+    slug: pages?.slug,
+    preview: preview,
+  });
 
   if (!router.isFallback && !pages?.slug) {
     return <NotFoundPage statusCode={404} />;
@@ -33,7 +33,7 @@ export default function Site({ pages, footer, preview = false }) {
         {seo != null && <SeoHead seo={seo} slug={slug} />}
         <Layout footer={footer != null ? footer : undefined}>
           {preview && <PreviewAlert />}
-          {pages.pageBuilder?.map(function (obj, index) {
+          {revalidatedPages?.pageBuilder?.map(function (obj, index) {
             //console.log({ ...Object.values(obj)[0] });
             //console.log("Module Name ist: ", Object.keys(obj)[0]);
             const content = { ...Object.values(obj)[0] };

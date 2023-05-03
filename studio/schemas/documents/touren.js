@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'inserat',
-  title: 'Inserat',
+  name: 'touren',
+  title: 'Touren',
   type: 'document',
   fields: [
     defineField({
@@ -27,16 +27,19 @@ export default defineType({
       type: 'datetime',
     }),
     defineField({
-      name: 'heroSection',
-      title: 'Hauptbeschreibung',
-      type: 'heroSection',
+      name: 'basicTourInformation',
+      title: 'Tour',
+      type: 'infoBande',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'specification',
-      title: 'Spezifikationen des Inserats',
-      type: 'array',
-      of: [{type: 'infoBox'}],
-      validation: (Rule) => Rule.required(4),
+      name: 'mainImage',
+      title: 'Main image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'pageBuilder',
@@ -50,6 +53,9 @@ export default defineType({
         {type: 'imageCarouselSection'},
         {type: 'blockSection'},
         {type: 'convictionSection'},
+        {type: 'specificationbanner'},
+        {type: 'portfolioSection'},
+        {type: 'heroSection'},
 
         // {
         //   title: 'Reusable Section',

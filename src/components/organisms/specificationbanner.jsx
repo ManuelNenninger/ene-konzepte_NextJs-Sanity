@@ -12,7 +12,9 @@ const defaultContent = [
 ];
 
 export default function BoxSx({ content }) {
-  const contentArray = content != null ? content : defaultContent;
+  const { corporateValueArray = defaultContent } =
+    content != null ? content : {};
+
   const GridItem = ({ title, describtion, index }) => {
     return (
       <>
@@ -54,7 +56,7 @@ export default function BoxSx({ content }) {
         alignItems="flex-start"
         spacing={{ xs: 4, md: 5, lg: 0 }}
       >
-        {contentArray.map((item, index) => {
+        {corporateValueArray.map((item, index) => {
           return (
             <>
               <GridItem {...item} index={index} />

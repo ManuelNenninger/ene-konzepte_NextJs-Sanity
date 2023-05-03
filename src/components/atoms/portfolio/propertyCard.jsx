@@ -53,7 +53,7 @@ export default function PropertyCard({
     <Card
       sx={{
         width: "100%",
-        backgroundColor: theme.palette.tertiary.main,
+        //backgroundColor: theme.palette.tertiary.main,
         borderRadius: 0,
         boxShadow: "none",
         pb: 5,
@@ -61,24 +61,25 @@ export default function PropertyCard({
     >
       <CardMedia
         component="img"
-        sx={{ height: { xs: 300, md: 500 } }}
+        alt={propertyName}
+        sx={{ height: { xs: 300, md: 300 } }}
         image={
           propertyImage?.asset != null
             ? urlFor(propertyImage).url()
             : Property1.src
         }
-        title={"Bild für" + propertyName}
+        title={"Bild für " + propertyName}
       />
-      <CardContent sx={{ pt: 5 }}>
-        <Typography gutterBottom variant="h4" component="div">
+      <CardContent sx={{ pt: 5, pl: 0 }}>
+        <Typography gutterBottom variant="h5" component="div">
           {propertyName}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {propertyDescribtion}
         </Typography>
       </CardContent>
-      <CardActions>
-        <ArrowButton buttonURL={"/immobilien/" + propertyURL} />
+      <CardActions sx={{ pl: 0 }}>
+        <ArrowButton buttonURL={"/touren/" + propertyURL} />
       </CardActions>
     </Card>
   );

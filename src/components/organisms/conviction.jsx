@@ -16,7 +16,10 @@ export default function Conviction({ content }) {
     setStates.dialogComponente(true);
   };
   const {
-    heading = { heading: "Our best offers", subheading: "Luxury at its best" },
+    heading: {
+      heading: title = "Default Heading",
+      subheading: describtion = "Default Describtion",
+    } = {},
     mainImage = null,
     callToAction = { buttonText: "Contect us", specialAction: true, url: null },
   } = content != null ? content : {};
@@ -29,8 +32,18 @@ export default function Conviction({ content }) {
           direction="column"
           justifyContent="flex-start"
           alignItems="flex-start"
+          spacing={1}
           sx={{ pr: { xs: 0, md: 20, xl: 30 } }}
         >
+          <Grid item xs={12}>
+            <Typography
+              variant="h3" //Ggf. h2
+              gutterBottom
+              sx={{ fontWeight: 400 }}
+            >
+              {title}{" "}
+            </Typography>
+          </Grid>
           <Grid item xs={12}>
             <Typography
               variant="subtitle1"
@@ -38,16 +51,7 @@ export default function Conviction({ content }) {
               gutterBottom
               sx={{}}
             >
-              {heading.subheading}
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography
-              variant="h3" //Ggf. h2
-              gutterBottom
-              sx={{ fontWeight: 400 }}
-            >
-              {heading.heading}{" "}
+              {describtion}
             </Typography>
           </Grid>
           <Grid item xs={12}>
@@ -56,6 +60,7 @@ export default function Conviction({ content }) {
               direction="row"
               justifyContent="center"
               alignItems="flex-start"
+              sx={{ pt: 1 }}
             >
               <ActionButton
                 variant="contained"
@@ -94,19 +99,16 @@ export default function Conviction({ content }) {
   };
 
   return (
-    <SectionWrapper topDistance>
+    <SectionWrapper topDistance fullDistanceBottom tertiaryBackgroundColor>
       <Grid
         container
         direction="row"
-        justifyContent="space-between"
+        justifyContent="flex-start"
         alignItems="center"
         spacing={{ xs: 5, md: 0 }}
       >
         <Grid item xs={12} md={6}>
           <ContentGrid />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <ImageCoontent />
         </Grid>
       </Grid>
     </SectionWrapper>

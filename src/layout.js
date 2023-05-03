@@ -19,7 +19,7 @@ export default function Layout(props) {
             mx: "auto",
           }}
         >
-          <Appbar>
+          <Appbar content={props?.footer}>
             <main>{props.children}</main>
             <Footer content={props?.footer} />
           </Appbar>

@@ -70,10 +70,18 @@ export default function SectionWrapper(props) {
       return theme.palette.secondary.main;
     } else {
       if (typeof tertiaryBackgroundColor !== "undefined") {
-        return theme.palette.tertiary.main;
+        return "none";
       } else {
         return theme.palette.primary.main;
       }
+    }
+  };
+
+  const backgroundcheck = () => {
+    if (typeof tertiaryBackgroundColor !== "undefined") {
+      return "linear-gradient(to left, rgba(231, 236, 239, 0) 0%,rgba(231, 236, 239,1) 100%)";
+    } else {
+      return undefined;
     }
   };
 
@@ -95,6 +103,7 @@ export default function SectionWrapper(props) {
           minHeight: heightCheck(),
           maxWidth: "1680px",
           backgroundColor: backgroundColorCheck(),
+          background: backgroundcheck(),
           px: { xs: 1, md: 10 },
           pt: upperPaddingCheck(),
           pb: lowerPaddingCheck(),

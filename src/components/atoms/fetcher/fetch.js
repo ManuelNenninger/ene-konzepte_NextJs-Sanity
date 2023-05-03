@@ -63,7 +63,7 @@ export const useGetAllPosts = ({ initialData, offset, preview }) => {
 
 export const useGetAllInserate = ({ initialData, offset, preview }) => {
   const getKey = (index, previousPageData) => {
-    return [`api/inserate`, { offset: index * 2, preview: preview }];
+    return [`api/touren`, { offset: index * 4, preview: preview }];
   };
   const results = useSWRInfinite(
     getKey,

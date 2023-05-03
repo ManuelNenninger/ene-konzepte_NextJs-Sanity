@@ -6,7 +6,13 @@ import SectionWrapper from "src/components/atoms/wrapperElements/sectionWrapper"
 import ArrowButton from "src/components/atoms/buttons/arrowButton";
 
 export default function BoxSx({ content }) {
-  const { darkBackgroundColor = true } = content != null ? content : {};
+  const {
+    darkBackgroundColor = true,
+    title = "Let's Go On A Journey And Find Your Lorem Ipsum",
+    describtion = "Lorem ipsum dolor sit amet, cons ectetur adip cing ellit, selad do eiusmod tempor tolos dolor the old she roltoy incid idunt labore ellt dolore magna the alora aliqua.Lorem ipsum dolor sit amet, cons ectetur adip cing ellit",
+    arrowButton = false,
+    button = null,
+  } = content != null ? content : {};
 
   const Heading = (props) => {
     return (
@@ -61,7 +67,7 @@ export default function BoxSx({ content }) {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <ArrowButton darkBackgroundColor buttonURL={"/"} /> {/*change URL*/}
+            {arrowButton && <ArrowButton darkBackgroundColor buttonURL={"/"} />}
           </Grid>
         </Grid>
       </>
@@ -82,16 +88,10 @@ export default function BoxSx({ content }) {
         spacing={{ xs: 2, md: 2 }}
       >
         <Grid item xs={12} md={6}>
-          <Heading>Let's Go On A Journey And Find Your Dream Home</Heading>
+          <Heading>{title}</Heading>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Describtion>
-            Lorem ipsum dolor sit amet, cons ectetur adip cing ellit, selad do
-            eiusmod tempor tolos dolor the old she roltoy incid idunt labore
-            ellt dolore magna the alora aliqua.Lorem ipsum dolor sit amet, cons
-            ectetur adip cing ellit, selad do eiusmod tempor tolos dolor the old
-            she roltoy incid idunt labore ellt dolore magna the alora aliqua.
-          </Describtion>
+          <Describtion>{describtion}</Describtion>
         </Grid>
       </Grid>
     </SectionWrapper>

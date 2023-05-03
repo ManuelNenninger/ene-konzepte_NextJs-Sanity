@@ -37,8 +37,8 @@ function ElevationScroll(props) {
 const drawerWidth = 240;
 //Hier sollten die Button definiert werden, für die unterseiten.
 const navItems = [
-  { buttonName: "About", href: "/about" },
-  { buttonName: "Immobilien", href: "/immobilien" },
+  { buttonName: "Impressum", href: "/impressum" },
+  { buttonName: "Touren", href: "/touren" },
 ];
 
 export default function DrawerAppBar(props) {
@@ -47,7 +47,7 @@ export default function DrawerAppBar(props) {
   // const [open, setOpen] = React.useState(false);
   const { states, setStates } = useAppContext();
   const { content = {} } = props;
-  const { brandname = "Brand" } = content;
+  const { brandName = "Brand", dialogPopUp } = content;
 
   const handleClickOpen = () => {
     setStates.dialogComponente(true);
@@ -65,16 +65,20 @@ export default function DrawerAppBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        {brandname}
-      </Typography>
+      <Link href="/">
+        <Typography variant="h6" sx={{ my: 2 }}>
+          {brandName}
+        </Typography>
+      </Link>
       <Divider />
       <List>
         {navItems.map((item, index) => (
           <ListItem key={"mobile_appbar_button" + index} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item.buttonName} />
-            </ListItemButton>
+            <Link href={item.href}>
+              <ListItemButton sx={{ textAlign: "center" }}>
+                <ListItemText primary={item.buttonName} />
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>
@@ -120,12 +124,16 @@ export default function DrawerAppBar(props) {
               component="div"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
-              <Link href="/">{brandname}</Link>
+              <Link href="/">{brandName}</Link>
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {navItems.length !== 0 &&
                 navItems.map((item, index) => (
-                  <NavigationButtons {...item} index={index} />
+                  <NavigationButtons
+                    {...item}
+                    index={index}
+                    key={"Appbar_NAV_Button_" + index}
+                  />
                 ))}
             </Box>
             <Box>
@@ -162,6 +170,7 @@ export default function DrawerAppBar(props) {
         <Toolbar />
         {props.children}
         <SubscribeDialogPopUp
+          content={dialogPopUp}
           open={states.dialogComponente}
           handleClose={handleClose}
         />
