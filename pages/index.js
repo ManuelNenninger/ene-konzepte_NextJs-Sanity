@@ -16,6 +16,8 @@ const Index = ({ pages = {}, footer = {} }) => {
     slug: "index",
     preview: false,
   });
+  //Solange in bearbeitung
+  return <NotFoundPage statusCode={404} />;
 
   if (!router.isFallback && !pages) {
     return <NotFoundPage statusCode={404} />;

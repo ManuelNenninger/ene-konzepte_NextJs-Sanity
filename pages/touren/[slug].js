@@ -24,6 +24,7 @@ const Inserat = ({ inserat, footer, preview = false }) => {
     shareTitle: describtion,
     shareGraphic: mainImage,
   };
+  return <NotFoundPage statusCode={404} />;
 
   const router = useRouter();
 
