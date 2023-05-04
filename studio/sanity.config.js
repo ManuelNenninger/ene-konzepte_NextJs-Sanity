@@ -2,6 +2,8 @@ import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
+import {vercelDeployTool} from 'sanity-plugin-vercel-deploy'
+
 {
   /*
 It is important to note that these variables are statically replaced during production. 
@@ -56,7 +58,7 @@ export default defineConfig({
     },
   },
 
-  plugins: [deskTool(), visionTool()],
+  plugins: [deskTool(), visionTool(), vercelDeployTool()],
 
   schema: {
     types: schemaTypes,
