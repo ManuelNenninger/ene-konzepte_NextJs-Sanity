@@ -1,4 +1,9 @@
-import { getPageData, getFooterData, getPostData } from "../../lib/api";
+import {
+  getPageData,
+  getFooterData,
+  getPostData,
+  getInseratData,
+} from "../../lib/api";
 
 export default async function enablePreview(req, res) {
   // console.log("Das secret im backend ist: ", req.query.secret);
@@ -27,16 +32,16 @@ export default async function enablePreview(req, res) {
     res.end();
   }
 
-  if (req.query.type === "post") {
+  if (req.query.type === "touren") {
     //Revalidiere, ob der Slug für den Document Typ exestiert (hier z.B fuer Type page)
-    const post = await getPostData(req.query.slug, true);
+    const post = await getInseratData(req.query.slug, true);
 
     if (!post) {
       return res.status(401).json({ message: "Invalid Slug!" });
     }
 
     res.setPreviewData({});
-    res.writeHead(307, { Location: `/immobilien/${post.slug}` });
+    res.writeHead(307, { Location: `/touren/${post.slug}` });
     res.end();
   }
 }

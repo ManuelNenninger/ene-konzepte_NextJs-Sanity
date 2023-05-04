@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import SvgWrapper from "./svgWaveWrapper";
 import { useTheme } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
+import { relative } from "path";
 
 export default function SectionWrapper(props) {
   const theme = useTheme();
@@ -108,6 +109,7 @@ export default function SectionWrapper(props) {
           pt: upperPaddingCheck(),
           pb: lowerPaddingCheck(),
           mt: footer && gridDistance + "px",
+          position: "relative",
         }}
       >
         {topDistance & deviderTop ? (

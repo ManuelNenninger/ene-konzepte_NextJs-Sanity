@@ -18,7 +18,8 @@ export default function Site({ pages, footer, preview = false }) {
     slug: pages?.slug,
     preview: preview,
   });
-  return <NotFoundPage statusCode={404} />;
+  // return <NotFoundPage statusCode={404} />;
+  console.log("Die preview ist: ", preview);
 
   if (!router.isFallback && !pages?.slug) {
     return <NotFoundPage statusCode={404} />;
@@ -63,7 +64,7 @@ export async function getStaticProps(context) {
   const { preview = false, previewData } = context;
   const pages = await getPageData(slug, preview);
   const footer = await getFooterData();
-
+  console.log("Die preview ist: ", preview);
   return {
     props: {
       pages,

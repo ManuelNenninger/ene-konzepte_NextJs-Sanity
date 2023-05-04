@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function PreviewAlert() {
   return (
     <>
-      <Alert severity="info">
+      <Alert severity="info" sx={{ zindex: 10 }}>
         <AlertTitle>INFO</AlertTitle>
         You are in Preview Mode. Here you see the unsaved changes. —{" "}
         <strong>

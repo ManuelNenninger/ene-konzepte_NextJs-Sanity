@@ -34,7 +34,7 @@ export default function Hero_two({ content }) {
           position: "absolute",
           width: "100%",
           height: "100%",
-          zindex: 10,
+          zindex: 2,
           align: "center",
           display: "flex" /* set display property to flex */,
           alignItems: "center" /* center the content vertically */,

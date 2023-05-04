@@ -15,6 +15,7 @@ export default function heroPicture({ mainImage, title }) {
           fill
           sx={{
             objectFit: "cover",
+            objectPosition: { xs: "right", md: "unset" },
           }}
         />
       </Box>

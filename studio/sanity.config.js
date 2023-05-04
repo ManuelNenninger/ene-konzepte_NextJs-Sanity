@@ -25,7 +25,20 @@ export default defineConfig({
     productionUrl: async (prev, context) => {
       // context includes the client an other details
       const {client, dataset, document} = context
-      if (document._type === 'post' || document._type === 'page') {
+      if (document._type === 'page' || document._type === 'page') {
+        // you can now use async/await 🎉
+
+        const params = new URLSearchParams()
+        params.set('preview', 'true')
+        params.set('secret', SANITY_STUDIO_PREVIEW_SECRET)
+        params.set('type', document._type)
+        params.set('slug', document?.slug?.current)
+        // return `${projectUrl}/api/preview?secret=${previewSecret}&slug=${document.slug.current}`
+        // return `http://localhost:3000/api/preview?secret=rheufufhg&slug=${document.slug.current}`
+        //return `http://localhost:3000/posts/${slug}?${params}`
+        return `http://localhost:3000/api/preview?${params}`
+      }
+      if (document._type === 'touren' || document._type === 'page') {
         // you can now use async/await 🎉
 
         const params = new URLSearchParams()
