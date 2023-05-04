@@ -16,6 +16,7 @@ const Index = ({ pages = {}, footer = {} }) => {
     slug: "index",
     preview: false,
   });
+
   //Solange in bearbeitung
   return <NotFoundPage statusCode={404} />;
 

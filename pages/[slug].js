@@ -18,6 +18,7 @@ export default function Site({ pages, footer, preview = false }) {
     slug: pages?.slug,
     preview: preview,
   });
+  return <NotFoundPage statusCode={404} />;
 
   if (!router.isFallback && !pages?.slug) {
     return <NotFoundPage statusCode={404} />;
