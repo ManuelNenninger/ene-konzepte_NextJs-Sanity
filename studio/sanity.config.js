@@ -12,6 +12,8 @@ For example, dynamic key access like process.env[key] will not work (they might 
 but will fail in production).
  */
 }
+// const SANITY_STUDIO_PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID
+// const SANITY_STUDIO_PREVIEW_SECRET = process.env.NEXT_PUBLIC_SANITY_STUDIO_PREVIEW_SECRET
 const SANITY_STUDIO_PROJECT_ID = process.env.SANITY_STUDIO_PROJECT_ID
 const SANITY_STUDIO_PREVIEW_SECRET = process.env.SANITY_STUDIO_PREVIEW_SECRET
 
