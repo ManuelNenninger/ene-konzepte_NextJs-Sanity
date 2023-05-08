@@ -18,6 +18,7 @@ const SANITY_STUDIO_PREVIEW_SECRET = process.env.SANITY_STUDIO_PREVIEW_SECRET
 export default defineConfig({
   name: 'default',
   title: 'ExpandedTemplate',
+  basePath: '/studio',
 
   projectId: SANITY_STUDIO_PROJECT_ID,
   dataset: 'production',

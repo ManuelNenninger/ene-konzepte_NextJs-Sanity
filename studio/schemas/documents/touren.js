@@ -36,6 +36,8 @@ export default defineType({
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
+      description:
+        'Das bild ist auch wichtig für SEO und wird häufig angezeigt, wenn jemand deinen Link in Sozialen medien teilt.',
       options: {
         hotspot: true,
       },

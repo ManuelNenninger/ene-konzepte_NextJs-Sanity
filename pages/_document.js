@@ -29,24 +29,10 @@ export default class MyDocument extends Document {
           />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="shortcut icon" href="/public/logo.png" />
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/public/logo.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/public/logo.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/public/logo.png"
-          />
+          <link rel="shortcut icon" href="/logo.ico" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/logo.ico" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/logo.ico" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/logo.ico" />
         </Head>
         <body>
           {/* Google Tag Manager - Global base code */}

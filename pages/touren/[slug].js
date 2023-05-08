@@ -52,6 +52,7 @@ const Inserat = ({ inserat, footer, preview = false }) => {
             <Module
               moduleName={"infoBande"}
               content={inserat?.basicTourInformation}
+              isHeroSection={true}
             />
           )}
 

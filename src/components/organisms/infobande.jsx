@@ -7,11 +7,12 @@ import ArrowButton from "src/components/atoms/buttons/arrowButton";
 
 export default function BoxSx({ content }) {
   const {
-    darkBackgroundColor = true,
+    darkBackgroundColor = false,
     title = "Let's Go On A Journey And Find Your Lorem Ipsum",
     describtion = "Lorem ipsum dolor sit amet, cons ectetur adip cing ellit, selad do eiusmod tempor tolos dolor the old she roltoy incid idunt labore ellt dolore magna the alora aliqua.Lorem ipsum dolor sit amet, cons ectetur adip cing ellit",
     arrowButton = false,
     button = null,
+    isHeroSection = false,
   } = content != null ? content : {};
 
   const Heading = (props) => {
@@ -19,6 +20,7 @@ export default function BoxSx({ content }) {
       <>
         <Typography
           variant="h3"
+          component={isHeroSection && "h1"}
           gutterBottom
           color={darkBackgroundColor && "text.tertiary"}
           sx={{
@@ -31,6 +33,7 @@ export default function BoxSx({ content }) {
         </Typography>
         <Typography
           variant="h4"
+          component={isHeroSection && "h1"}
           gutterBottom
           color={darkBackgroundColor && "text.tertiary"}
           sx={{
@@ -59,7 +62,7 @@ export default function BoxSx({ content }) {
           <Grid item xs={12}>
             <Typography
               variant="subtitle1"
-              component="h1"
+              component={isHeroSection && "h2"}
               gutterBottom
               color={darkBackgroundColor && "text.tertiary"}
             >
@@ -75,11 +78,7 @@ export default function BoxSx({ content }) {
   };
 
   return (
-    <SectionWrapper
-      topDistance
-      bottomDistance
-      secondaryBackgroundColor={darkBackgroundColor}
-    >
+    <SectionWrapper topDistance bottomDistance secondaryBackgroundColor={true}>
       <Grid
         container
         direction="row"
