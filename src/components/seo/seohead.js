@@ -15,13 +15,13 @@ export default function SeoComponent({ seo = {}, slug }) {
     typeof window !== "undefined" && window.location.origin
       ? window.location.origin
       : "";
+
+  const PROJECT_URL = process.env.NEXT_PUBLIC_PROJECT_URL;
+
   const shareGraphicURL = shareGraphic
     ? urlFor(shareGraphic)?.url()
     : undefined;
-  let url =
-    slug == "index"
-      ? "https://www.ene-konzepte.de/"
-      : "https://www.ene-konzepte.de/" + slug;
+  let url = slug == "index" ? PROJECT_URL : PROJECT_URL + slug;
 
   return (
     <>

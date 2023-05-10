@@ -1,9 +1,11 @@
 import {defineField, defineType} from 'sanity'
+import {CopyIcon} from '@sanity/icons'
 
 export default defineType({
   title: 'Pop up -  Call to action',
   name: 'callToActionPopUp',
   type: 'document',
+  icon: CopyIcon,
   fields: [
     defineField({
       title: 'Title',

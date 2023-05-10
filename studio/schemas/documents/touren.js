@@ -1,9 +1,11 @@
 import {defineField, defineType} from 'sanity'
+import {OlistIcon} from '@sanity/icons'
 
 export default defineType({
   name: 'touren',
   title: 'Touren',
   type: 'document',
+  icon: OlistIcon,
   fields: [
     defineField({
       name: 'title',

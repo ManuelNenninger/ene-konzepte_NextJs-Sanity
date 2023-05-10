@@ -1,9 +1,11 @@
 import {defineField, defineType} from 'sanity'
+import {MenuIcon} from '@sanity/icons'
 
 export default defineType({
   name: 'footer',
   title: 'Footer',
   type: 'document',
+  icon: MenuIcon,
   fields: [
     defineField({
       name: 'brandName',

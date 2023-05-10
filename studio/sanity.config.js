@@ -1,69 +1,20 @@
-import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas'
-import {vercelDeployTool} from 'sanity-plugin-vercel-deploy'
+import SanityConfig from '../sanity.config'
+export default SanityConfig
 
 {
   /*
-It is important to note that these variables are statically replaced during production. 
-It is therefore necessary to always reference them using the full static string. 
-For example, dynamic key access like process.env[key] will not work (they might be accessible this way in development, 
-but will fail in production).
- */
+   * Die Sanity.config.js ist auf Top-Level der NextJs App
+   * Damit auch im Sub-Folder Stiduo über npx sanity start das Studio gehosted werden kann, muss die Config auf Top-Level des Sub-Folders exestieren.
+   * Die .env- Variablen werden aus NextJS Top-Level importiert.
+   
+├── My Application
+│   ├── pages
+│   └── app
+│   │── sanity.config.js
+│   ├── src
+│   └── studio
+│       ├── schema
+│       └── sanity.config.js
+
+   */
 }
-// const SANITY_STUDIO_PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID
-// const SANITY_STUDIO_PREVIEW_SECRET = process.env.NEXT_PUBLIC_SANITY_STUDIO_PREVIEW_SECRET
-const SANITY_STUDIO_PROJECT_ID = process.env.SANITY_STUDIO_PROJECT_ID
-const SANITY_STUDIO_PREVIEW_SECRET = process.env.SANITY_STUDIO_PREVIEW_SECRET
-
-export default defineConfig({
-  name: 'default',
-  title: 'ExpandedTemplate',
-  basePath: '/studio',
-
-  projectId: SANITY_STUDIO_PROJECT_ID,
-  dataset: 'production',
-  //https://www.sanity.io/docs/migrating-production-url-resolver
-  document: {
-    // prev is the result from previous plugins and can be composed
-    productionUrl: async (prev, context) => {
-      // context includes the client an other details
-      const {client, dataset, document} = context
-      if (document._type === 'page' || document._type === 'page') {
-        // you can now use async/await 🎉
-
-        const params = new URLSearchParams()
-        params.set('preview', 'true')
-        params.set('secret', SANITY_STUDIO_PREVIEW_SECRET)
-        params.set('type', document._type)
-        params.set('slug', document?.slug?.current)
-        // return `${projectUrl}/api/preview?secret=${previewSecret}&slug=${document.slug.current}`
-        // return `http://localhost:3000/api/preview?secret=rheufufhg&slug=${document.slug.current}`
-        //return `http://localhost:3000/posts/${slug}?${params}`
-        return `http://localhost:3000/api/preview?${params}`
-      }
-      if (document._type === 'touren' || document._type === 'page') {
-        // you can now use async/await 🎉
-
-        const params = new URLSearchParams()
-        params.set('preview', 'true')
-        params.set('secret', SANITY_STUDIO_PREVIEW_SECRET)
-        params.set('type', document._type)
-        params.set('slug', document?.slug?.current)
-        // return `${projectUrl}/api/preview?secret=${previewSecret}&slug=${document.slug.current}`
-        // return `http://localhost:3000/api/preview?secret=rheufufhg&slug=${document.slug.current}`
-        //return `http://localhost:3000/posts/${slug}?${params}`
-        return `http://localhost:3000/api/preview?${params}`
-      }
-
-      return prev
-    },
-  },
-
-  plugins: [deskTool(), visionTool(), vercelDeployTool()],
-
-  schema: {
-    types: schemaTypes,
-  },
-})

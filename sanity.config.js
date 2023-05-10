@@ -14,10 +14,9 @@ but will fail in production).
 }
 // const SANITY_STUDIO_PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID
 // const SANITY_STUDIO_PREVIEW_SECRET = process.env.NEXT_PUBLIC_SANITY_STUDIO_PREVIEW_SECRET
-const SANITY_STUDIO_PROJECT_ID =
-  process.env.NEXT_PUBLIC_SANITY_STUDIO_PROJECT_ID;
+const SANITY_STUDIO_PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const SANITY_STUDIO_PREVIEW_SECRET =
-  process.env.NEXT_PUBLIC_SANITY_STUDIO_PREVIEW_SECRET;
+  process.env.NEXT_PUBLIC_SANITY_PREVIEW_SECRET;
 const PROJECT_URL = process.env.NEXT_PUBLIC_PROJECT_URL;
 
 export default defineConfig({
@@ -43,7 +42,7 @@ export default defineConfig({
         // return `${projectUrl}/api/preview?secret=${previewSecret}&slug=${document.slug.current}`
         // return `http://localhost:3000/api/preview?secret=rheufufhg&slug=${document.slug.current}`
         //return `http://localhost:3000/posts/${slug}?${params}`
-        return `http://localhost:3000/api/preview?${params}`;
+        return `${PROJECT_URL}/api/preview?${params}`;
       }
       if (document._type === "touren" || document._type === "page") {
         // you can now use async/await 🎉
