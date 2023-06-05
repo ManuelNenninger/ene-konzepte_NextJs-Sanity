@@ -1,4 +1,3 @@
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -7,10 +6,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import ActionButton from "src/components/atoms/buttons/actionButton";
-import EmailSubscribtion from "src/components/atoms/dialogPopUp/eMailSubscribtionForm";
 import Grid from "@mui/material/Grid";
-import ContactForm from "src/components/atoms/dialogPopUp/contactform";
+import ContactForm from "src/components/atoms/dialogPopUp/contactFormEMAILJS";
 
 export default function DialogOrder({ open, handleClose, order, content }) {
   const theme = useTheme();

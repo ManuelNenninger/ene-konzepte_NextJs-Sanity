@@ -9,6 +9,13 @@ import Grid from "@mui/material/Grid";
 
 import Box from "@mui/material/Box";
 
+{
+  /*
+   * E-Mail Subscribtion Button und Input via Mailchimp
+   * Ändere die action der Form und den Name des Inputs.
+   */
+}
+
 export default function CheckboxLabels() {
   const theme = useTheme();
 

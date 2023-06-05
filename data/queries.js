@@ -68,7 +68,7 @@ export const modules = `
       title,
       describtion,
       mainImage,
-
+      callToAction,
     }
   },
   _type == 'infoBande' => {

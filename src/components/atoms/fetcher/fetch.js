@@ -35,6 +35,25 @@ export const useGetPages = ({ initialData, slug, preview }) => {
   );
 };
 
+export const useGetInserates = ({ initialData, slug, preview }) => {
+  console.log("useGetInserates wurde angefragt für: ", slug);
+  console.log("Preview ist: ", preview);
+  const token = { slug: slug, preview: preview };
+  return useSWR(
+    [`api/get-inserate`, token],
+    costumeFetcher,
+    {
+      fallbackData: initialData,
+    },
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+      revalidateOnMount: false,
+    }
+  );
+};
+
 export const useGetAllPosts = ({ initialData, offset, preview }) => {
   const getKey = (index, previousPageData) => {
     return [`api/posts`, { offset: index * 2, preview: preview }];

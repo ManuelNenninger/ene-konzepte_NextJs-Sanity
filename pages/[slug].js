@@ -19,7 +19,6 @@ export default function Site({ pages, footer, preview = false }) {
     preview: preview,
   });
   // return <NotFoundPage statusCode={404} />;
-  console.log("Die preview ist: ", preview);
 
   if (!router.isFallback && !pages?.slug) {
     return <NotFoundPage statusCode={404} />;

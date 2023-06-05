@@ -7,6 +7,13 @@ import MarkunreadIcon from "@mui/icons-material/Markunread";
 import { useTheme } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
 
+{
+  /*
+   * Die Kontaktform ist für Mailchimp.
+   * Ändere die action der Form und den Name des Inputs.
+   */
+}
+
 export default function MultilineTextFields() {
   const theme = useTheme();
 
@@ -45,7 +52,8 @@ export default function MultilineTextFields() {
   return (
     <Box>
       <form
-        //action="https://gmail.us17.list-manage.com/subscribe/post?u=400f776a9804292f43ee55016&amp;id=0d0ca739b4&amp;f_id=00c24fe0f0"
+        // action="https://gmail.us17.list-manage.com/subscribe/post?u=400f776a9804292f43ee55016&amp;id=0d0ca739b4&amp;f_id=00c24fe0f0"
+        action="https://ene-konzepte.us17.list-manage.com/subscribe/post?u=ab9d1e66130232e185d989db3&amp;id=76fa18e9e1&amp;f_id=008e7ce0f0"
         method="post"
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"
@@ -101,7 +109,7 @@ export default function MultilineTextFields() {
             >
               <input
                 type="text"
-                name="b_400f776a9804292f43ee55016_0d0ca739b4"
+                name="b_ab9d1e66130232e185d989db3_76fa18e9e1"
                 tabindex="-1"
                 value=""
               />

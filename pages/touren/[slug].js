@@ -7,7 +7,7 @@ import Fullpageloader from "src/components/atoms/actions/fullpageloader";
 import { useRouter } from "next/router";
 import { getFooterData, getPostData, getInseratData } from "lib/api";
 import PreviewAlert from "src/components/atoms/actions/previewalert";
-import { urlFor } from "lib/sanity";
+import { useGetInserates } from "src/components/atoms/fetcher/fetch";
 
 const Inserat = ({ inserat, footer, preview = false }) => {
   const {
@@ -28,11 +28,11 @@ const Inserat = ({ inserat, footer, preview = false }) => {
 
   const router = useRouter();
 
-  // const { data: revalidatedPages, error } = useGetPages({
-  //   initialData: pages,
-  //   slug: pages?.slug,
-  //   preview: preview,
-  // });
+  const { data: revalidatedPages, error } = useGetInserates({
+    initialData: inserat,
+    slug: inserat?.slug,
+    preview: preview,
+  });
 
   if (!router.isFallback && !inserat?.slug) {
     return <NotFoundPage statusCode={404} />;
@@ -48,7 +48,7 @@ const Inserat = ({ inserat, footer, preview = false }) => {
         {seo != null && <SeoHead seo={seo} slug={inserat?.slug} />}
         <Layout footer={footer != null ? footer : undefined}>
           {preview && <PreviewAlert />}
-          {inserat?.basicTourInformation && (
+          {revalidatedPages?.basicTourInformation && (
             <Module
               moduleName={"infoBande"}
               content={inserat?.basicTourInformation}
@@ -56,7 +56,7 @@ const Inserat = ({ inserat, footer, preview = false }) => {
             />
           )}
 
-          {inserat?.pageBuilder?.map(function (obj, index) {
+          {revalidatedPages?.pageBuilder?.map(function (obj, index) {
             //console.log({ ...Object.values(obj)[0] });
             //console.log("Module Name ist: ", Object.keys(obj)[0]);
             const content = { ...Object.values(obj)[0] };

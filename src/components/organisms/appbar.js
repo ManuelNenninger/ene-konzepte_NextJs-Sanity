@@ -139,7 +139,7 @@ export default function DrawerAppBar(props) {
             <Box>
               <ActionButton
                 variant="contained"
-                text={"Say Hello"}
+                text={"Jetzt buchen"}
                 onClick={handleClickOpen}
               />
             </Box>
