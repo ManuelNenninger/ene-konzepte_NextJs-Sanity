@@ -18,7 +18,7 @@ const Index = ({ pages = {}, footer = {} }) => {
   });
 
   //Solange in bearbeitung
-  return <NotFoundPage statusCode={404} />;
+  // return <NotFoundPage statusCode={404} />;
 
   if (!router.isFallback && !pages) {
     return <NotFoundPage statusCode={404} />;
@@ -51,6 +51,7 @@ export async function getStaticProps() {
   //you can delete getTestData
   const pages = await getIndexPageData();
   const footer = await getFooterData();
+
   return {
     props: {
       pages,
